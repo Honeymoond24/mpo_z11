@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>Народный контроль</title>
+	<link rel="stylesheet" href="./Народный%20контроль_files/bootstrap.css" media="screen">
+	<link rel="stylesheet" href="./Народный%20контроль_files/jquery-ui.css">
+	<link rel="stylesheet" href="./Народный%20контроль_files/leaflet.css">
+	<link rel="stylesheet" href="./Народный%20контроль_files/leaflet.draw.css">
+	<link rel="stylesheet" href="./Народный%20контроль_files/MarkerCluster.css">
+	<link rel="stylesheet" href="./Народный%20контроль_files/MarkerCluster.Default.css">
+	<link rel="stylesheet" href="./Народный%20контроль_files/leaflet.fullscreen.css">
+	<link rel="stylesheet" href="./Народный%20контроль_files/psp_style.css">
+	<link href="./Народный%20контроль_files/captcha.css" rel="stylesheet">
+	<link href="./Народный%20контроль_files/responsiveslides.css" rel="stylesheet">
+	<link href="./Народный%20контроль_files/paginator3000.css" rel="stylesheet">
+	<link href="./Народный%20контроль_files/select2.css" rel="stylesheet">
+	<link rel="stylesheet" href="./Народный%20контроль_files/style.css" media="screen">
+
+	<script async="" src="./Народный%20контроль_files/watch.js.Без%20названия"></script>
+	<script async="" src="./Народный%20контроль_files/recaptcha__ru.js.Без%20названия" crossorigin="anonymous"
+		integrity="sha384-/u04fBGCHzogUb13s/NWNAYZlcgl6g+lYHG320EgUVsuoZpaGHYxsTqCDRTlk2xY"></script>
+	<script src="./Народный%20контроль_files/jquery.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/jquery-ui.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/bootstrap.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/leaflet-src.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/leaflet.draw-src.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/leaflet.markercluster-src.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/Leaflet.fullscreen.min.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/password_strength_plugin.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/jquery.inputmask.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/jquery.captcha.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/responsiveslides.min.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/paginator3000.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/select2.min.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/scripts.js.Без%20названия"></script>
+	<script src="./Народный%20контроль_files/api.js.Без%20названия"></script>
+	<style>
+		img {
+			border: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div id="header_nav">
+			<ul>
+				<li><a href="http://akorda.kz/" target="_blank">Сайт Президента РК</a></li>
+				<li><a href="http://www.government.kz/" target="_blank">Сайт Правительства РК</a></li>
+				<li><a href="http://sko.gov.kz/" target="_blank">Сайт СКО</a></li>
+				<li><a href="http://petropavl.sko.kz/" target="_blank">Сайт акимата г.Петропавловска</a></li>
+				<li><a href="http://egov.kz/" target="_blank">Портал государственных услуг</a></li>
+			</ul>
+		</div>
+	</header>
+	<div id="wrap">
+		<div id="logo"><img alt="" src="./Народный%20контроль_files/logo-title.png">
+		</div>
+		<div id="conteiner" class="container">
+			<div id="nav">
+				<nav class="navbar navbar-default custom">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse"
+								data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="http://nk.sko.kz/index.php">Главная</a></li>
+								<li><a href="http://nk.sko.kz/event.php?do=list">События</a></li>
+								<li><a href="http://nk.sko.kz/reports.php?do=region">Статистика</a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="http://nk.sko.kz/registration.php">Регистрация</a></li>
+								<li><a href="http://nk.sko.kz/index.php" data-toggle="modal"
+										data-target="#mod_autorization">Авторизация</a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div id="content">
+				<h3>Народный контроль</h3>
+				<hr>
+				<div class="alert alert-info">
+					<p>Рубрика «Народный контроль» является еще одним способом взаимодействия с обществом. Цель создания
+						«Народного контроля» — оперативное решение наиболее острых социально-значимых проблем, а также
+						создание механизма оценки гражданами эффективности деятельности государственных органов области.
+					</p>
+
+					<p>Зарегистрировавшись в системе «Народный контроль», Вы можете оставлять свои сообщения с
+						прикреплением фотофактов, добавлять комментарии либо поддержать касающуюся Вас проблему.</p>
+
+					<p>Все сообщения будут рассмотрены в обязательном порядке с указанием сроков решения проблемы.</p>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-8 leaflet-container leaflet-fade-anim" id="map" tabindex="0">
+						<div class="leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);">
+							<div class="leaflet-tile-pane">
+								<div class="leaflet-layer">
+									<div class="leaflet-tile-container"></div>
+									<div class="leaflet-tile-container leaflet-zoom-animated"><img alt="Description"
+											class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2596.png"
+											style="height: 256px; width: 256px; left: 15px; top: 74px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2596(1).png"
+											style="height: 256px; width: 256px; left: 271px; top: 74px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2595.png"
+											style="height: 256px; width: 256px; left: 15px; top: -182px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2595(1).png"
+											style="height: 256px; width: 256px; left: 271px; top: -182px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2597.png"
+											style="height: 256px; width: 256px; left: 15px; top: 330px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2597(1).png"
+											style="height: 256px; width: 256px; left: 271px; top: 330px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2596(2).png"
+											style="height: 256px; width: 256px; left: -241px; top: 74px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2596(3).png"
+											style="height: 256px; width: 256px; left: 527px; top: 74px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2595(2).png"
+											style="height: 256px; width: 256px; left: -241px; top: -182px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2595(3).png"
+											style="height: 256px; width: 256px; left: 527px; top: -182px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2597(2).png"
+											style="height: 256px; width: 256px; left: -241px; top: 330px;"><img
+											alt="Description" class="leaflet-tile leaflet-tile-loaded"
+											src="./Народный%20контроль_files/2597(3).png"
+											style="height: 256px; width: 256px; left: 527px; top: 330px;"></div>
+								</div>
+							</div>
+							<div class="leaflet-objects-pane">
+								<div class="leaflet-shadow-pane"><img alt="Description"
+										src="./Народный%20контроль_files/marker-shadow.png"
+										class="leaflet-marker-shadow leaflet-zoom-animated"
+										style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(435px, 332px, 0px);"><img
+										alt="Description" src="./Народный%20контроль_files/marker-shadow.png"
+										class="leaflet-marker-shadow leaflet-zoom-animated"
+										style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(1028px, 355px, 0px);"><img
+										alt="Description" src="./Народный%20контроль_files/marker-shadow.png"
+										class="leaflet-marker-shadow leaflet-zoom-animated"
+										style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-413px, -272px, 0px);"><img
+										alt="Description" src="./Народный%20контроль_files/marker-shadow.png"
+										class="leaflet-marker-shadow leaflet-zoom-animated"
+										style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(135px, -57px, 0px);"><img
+										alt="Description" src="./Народный%20контроль_files/marker-shadow.png"
+										class="leaflet-marker-shadow leaflet-zoom-animated"
+										style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(721px, 403px, 0px);"><img
+										alt="Description" src="./Народный%20контроль_files/marker-shadow.png"
+										class="leaflet-marker-shadow leaflet-zoom-animated"
+										style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(286px, 530px, 0px);">
+								</div>
+								<div class="leaflet-overlay-pane"><svg class="leaflet-zoom-animated" width="630"
+										height="378" viewBox="-13 -8 630 378"
+										style="transform: translate3d(-13px, -8px, 0px);"></svg></div>
+								<div class="leaflet-marker-pane">
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(1144px, 570px, 0px); z-index: 570;">
+										<div><span>2</span></div>
+									</div><img alt="Description" src="./Народный%20контроль_files/marker-icon.png"
+										class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" title="97"
+										tabindex="0"
+										style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(435px, 332px, 0px); z-index: 332;">
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(805px, -220px, 0px); z-index: -220;">
+										<div><span>2</span></div>
+									</div><img alt="Description" src="./Народный%20контроль_files/marker-icon.png"
+										class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" title="173"
+										tabindex="0"
+										style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(1028px, 355px, 0px); z-index: 355;"><img
+										alt="Description" src="./Народный%20контроль_files/marker-icon.png"
+										class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" title="175"
+										tabindex="0"
+										style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-413px, -272px, 0px); z-index: -272;"><img
+										alt="Description" src="./Народный%20контроль_files/marker-icon.png"
+										class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" title="183"
+										tabindex="0"
+										style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(135px, -57px, 0px); z-index: -57;"><img
+										alt="Description" src="./Народный%20контроль_files/marker-icon.png"
+										class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" title="547"
+										tabindex="0"
+										style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(721px, 403px, 0px); z-index: 403;">
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(1092px, 451px, 0px); z-index: 451;">
+										<div><span>2</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(578px, 364px, 0px); z-index: 364;">
+										<div><span>2</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(48px, 378px, 0px); z-index: 378;">
+										<div><span>2</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(469px, -182px, 0px); z-index: -182;">
+										<div><span>2</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(551px, -335px, 0px); z-index: -335;">
+										<div><span>3</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(694px, 196px, 0px); z-index: 196;">
+										<div><span>3</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(388px, -81px, 0px); z-index: -81;">
+										<div><span>24</span></div>
+									</div><img alt="Description" src="./Народный%20контроль_files/marker-icon.png"
+										class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" title="698"
+										tabindex="0"
+										style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(286px, 530px, 0px); z-index: 530;">
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(466px, 423px, 0px); z-index: 423;">
+										<div><span>7</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-small leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(166px, 388px, 0px); z-index: 388;">
+										<div><span>5</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(732px, 139px, 0px); z-index: 139;">
+										<div><span>31</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(548px, 273px, 0px); z-index: 273;">
+										<div><span>28</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(402px, 35px, 0px); z-index: 35;">
+										<div><span>35</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(632px, 349px, 0px); z-index: 349;">
+										<div><span>11</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(444px, 191px, 0px); z-index: 191;">
+										<div><span>37</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(173px, 67px, 0px); z-index: 67;">
+										<div><span>12</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(201px, 288px, 0px); z-index: 288;">
+										<div><span>19</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(369px, -172px, 0px); z-index: -172;">
+										<div><span>33</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(244px, 125px, 0px); z-index: 125;">
+										<div><span>53</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(414px, -280px, 0px); z-index: -280;">
+										<div><span>35</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(362px, 171px, 0px); z-index: 171;">
+										<div><span>42</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(307px, 229px, 0px); z-index: 229;">
+										<div><span>38</span></div>
+									</div>
+									<div class="leaflet-marker-icon marker-cluster marker-cluster-medium leaflet-zoom-animated leaflet-clickable"
+										tabindex="0"
+										style="margin-left: -20px; margin-top: -20px; width: 40px; height: 40px; transform: translate3d(326px, 47px, 0px); z-index: 47;">
+										<div><span>39</span></div>
+									</div>
+								</div>
+								<div class="leaflet-popup-pane"></div>
+							</div>
+						</div>
+						<div class="leaflet-control-container">
+							<div class="leaflet-top leaflet-left">
+								<div class="leaflet-control-zoom leaflet-bar leaflet-control"><a
+										class="leaflet-control-zoom-in" href="http://nk.sko.kz/index.php#"
+										title="Zoom in">+</a><a class="leaflet-control-zoom-out"
+										href="http://nk.sko.kz/index.php#" title="Zoom out">-</a></div>
+								<div class="leaflet-control-fullscreen leaflet-bar leaflet-control"><a
+										class="leaflet-control-fullscreen-button leaflet-bar-part"
+										href="http://nk.sko.kz/index.php#" title="View Fullscreen"></a></div>
+							</div>
+							<div class="leaflet-top leaflet-right"></div>
+							<div class="leaflet-bottom leaflet-left"></div>
+							<div class="leaflet-bottom leaflet-right">
+								<div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com/"
+										title="A JS library for interactive maps">Leaflet</a> | © <a
+										href="http://osm.org/copyright">OpenStreetMap</a> contributors</div>
+							</div>
+						</div>
+					</div>
+					<script>
+						var cloudmadeUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+							cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: '&copy; <a href=http://osm.org/copyright>OpenStreetMap</a> contributors'}),
+							map = new L.Map('map', {layers: [cloudmade], center: new L.LatLng(54.866, 69.13131), zoom: 13, fullscreenControl: true});
+						var markers = new L.MarkerClusterGroup();
+						map.addLayer(markers); var m15 = L.marker([54.878865575, 69.131205525], {title: '15'}).addTo(markers);
+						$(m15).click(function () {window.location.href = 'event.php?do=show&e=15'}); var m14 = L.marker([54.872551813845, 69.119180579628], {title: '14'}).addTo(markers);
+						$(m14).click(function () {window.location.href = 'event.php?do=show&e=14'}); var m122 = L.marker([54.827283627611315, 69.27621460170485], {title: '122'}).addTo(markers);
+						$(m122).click(function () {window.location.href = 'event.php?do=show&e=122'}); var m38 = L.marker([54.910375796097874, 69.1478419303894], {title: '38'}).addTo(markers);
+						$(m38).click(function () {window.location.href = 'event.php?do=show&e=38'}); var m20 = L.marker([54.865448383333, 69.119184666667], {title: '20'}).addTo(markers);
+						$(m20).click(function () {window.location.href = 'event.php?do=show&e=20'}); var m128 = L.marker([54.82798570029684, 69.27557945251465], {title: '128'}).addTo(markers);
+						$(m128).click(function () {window.location.href = 'event.php?do=show&e=128'}); var m160 = L.marker([54.879315475, 69.11161755], {title: '160'}).addTo(markers);
+						$(m160).click(function () {window.location.href = 'event.php?do=show&e=160'}); var m19 = L.marker([54.879405885622916, 69.14018422365189], {title: '19'}).addTo(markers);
+						$(m19).click(function () {window.location.href = 'event.php?do=show&e=19'}); var m25 = L.marker([54.857732658764284, 69.17010784061858], {title: '25'}).addTo(markers);
+						$(m25).click(function () {window.location.href = 'event.php?do=show&e=25'}); var m22 = L.marker([54.86036665922685, 69.12625122175086], {title: '22'}).addTo(markers);
+						$(m22).click(function () {window.location.href = 'event.php?do=show&e=22'}); var m218 = L.marker([54.86222205, 69.15530195], {title: '218'}).addTo(markers);
+						$(m218).click(function () {window.location.href = 'event.php?do=show&e=218'}); var m162 = L.marker([54.861784384868, 69.202672988176], {title: '162'}).addTo(markers);
+						$(m162).click(function () {window.location.href = 'event.php?do=show&e=162'}); var m21 = L.marker([54.852640025, 69.11738665], {title: '21'}).addTo(markers);
+						$(m21).click(function () {window.location.href = 'event.php?do=show&e=21'}); var m110 = L.marker([54.867413275, 69.1224618], {title: '110'}).addTo(markers);
+						$(m110).click(function () {window.location.href = 'event.php?do=show&e=110'}); var m170 = L.marker([54.90565734581738, 69.21766519546509], {title: '170'}).addTo(markers);
+						$(m170).click(function () {window.location.href = 'event.php?do=show&e=170'}); var m197 = L.marker([54.87589445, 69.1283168], {title: '197'}).addTo(markers);
+						$(m197).click(function () {window.location.href = 'event.php?do=show&e=197'}); var m28 = L.marker([54.860139163583, 69.175011917264], {title: '28'}).addTo(markers);
+						$(m28).click(function () {window.location.href = 'event.php?do=show&e=28'}); var m53 = L.marker([54.871490025, 69.11443135], {title: '53'}).addTo(markers);
+						$(m53).click(function () {window.location.href = 'event.php?do=show&e=53'}); var m29 = L.marker([54.864809283333, 69.141378916667], {title: '29'}).addTo(markers);
+						$(m29).click(function () {window.location.href = 'event.php?do=show&e=29'}); var m66 = L.marker([54.91080135461857, 69.14164066314697], {title: '66'}).addTo(markers);
+						$(m66).click(function () {window.location.href = 'event.php?do=show&e=66'}); var m79 = L.marker([54.853492450114686, 69.1131529211998], {title: '79'}).addTo(markers);
+						$(m79).click(function () {window.location.href = 'event.php?do=show&e=79'}); var m47 = L.marker([54.9029911, 69.1373219], {title: '47'}).addTo(markers);
+						$(m47).click(function () {window.location.href = 'event.php?do=show&e=47'}); var m88 = L.marker([54.87953550354083, 69.15049731731415], {title: '88'}).addTo(markers);
+						$(m88).click(function () {window.location.href = 'event.php?do=show&e=88'}); var m31 = L.marker([54.858013675, 69.1700859], {title: '31'}).addTo(markers);
+						$(m31).click(function () {window.location.href = 'event.php?do=show&e=31'}); var m30 = L.marker([54.88024222247398, 69.1272720694542], {title: '30'}).addTo(markers);
+						$(m30).click(function () {window.location.href = 'event.php?do=show&e=30'}); var m42 = L.marker([54.85755935, 69.16803545], {title: '42'}).addTo(markers);
+						$(m42).click(function () {window.location.href = 'event.php?do=show&e=42'}); var m134 = L.marker([54.87987, 69.13662774], {title: '134'}).addTo(markers);
+						$(m134).click(function () {window.location.href = 'event.php?do=show&e=134'}); var m45 = L.marker([54.855336325, 69.131494075], {title: '45'}).addTo(markers);
+						$(m45).click(function () {window.location.href = 'event.php?do=show&e=45'}); var m167 = L.marker([54.87854484172786, 69.12012934684753], {title: '167'}).addTo(markers);
+						$(m167).click(function () {window.location.href = 'event.php?do=show&e=167'}); var m62 = L.marker([54.86621285, 69.19812375], {title: '62'}).addTo(markers);
+						$(m62).click(function () {window.location.href = 'event.php?do=show&e=62'}); var m50 = L.marker([54.866122075, 69.1376542], {title: '50'}).addTo(markers);
+						$(m50).click(function () {window.location.href = 'event.php?do=show&e=50'}); var m136 = L.marker([54.87987, 69.13662774], {title: '136'}).addTo(markers);
+						$(m136).click(function () {window.location.href = 'event.php?do=show&e=136'}); var m135 = L.marker([54.860112730769, 69.160491915385], {title: '135'}).addTo(markers);
+						$(m135).click(function () {window.location.href = 'event.php?do=show&e=135'}); var m138 = L.marker([54.8663178851451, 69.15213882923126], {title: '138'}).addTo(markers);
+						$(m138).click(function () {window.location.href = 'event.php?do=show&e=138'}); var m163 = L.marker([54.967095375, 69.13104075], {title: '163'}).addTo(markers);
+						$(m163).click(function () {window.location.href = 'event.php?do=show&e=163'}); var m153 = L.marker([54.872096457842, 69.203323423862], {title: '153'}).addTo(markers);
+						$(m153).click(function () {window.location.href = 'event.php?do=show&e=153'}); var m46 = L.marker([54.85755313670535, 69.13210272789001], {title: '46'}).addTo(markers);
+						$(m46).click(function () {window.location.href = 'event.php?do=show&e=46'}); var m147 = L.marker([54.873320233333, 69.1231226], {title: '147'}).addTo(markers);
+						$(m147).click(function () {window.location.href = 'event.php?do=show&e=147'}); var m49 = L.marker([54.879476866915326, 69.15179014205933], {title: '49'}).addTo(markers);
+						$(m49).click(function () {window.location.href = 'event.php?do=show&e=49'}); var m60 = L.marker([54.842955775, 69.15945925], {title: '60'}).addTo(markers);
+						$(m60).click(function () {window.location.href = 'event.php?do=show&e=60'}); var m64 = L.marker([54.851878875, 69.1911455], {title: '64'}).addTo(markers);
+						$(m64).click(function () {window.location.href = 'event.php?do=show&e=64'}); var m137 = L.marker([54.865448383333, 69.119184666667], {title: '137'}).addTo(markers);
+						$(m137).click(function () {window.location.href = 'event.php?do=show&e=137'}); var m68 = L.marker([54.91080135461857, 69.14164066314697], {title: '68'}).addTo(markers);
+						$(m68).click(function () {window.location.href = 'event.php?do=show&e=68'}); var m72 = L.marker([54.90501266, 69.14300268], {title: '72'}).addTo(markers);
+						$(m72).click(function () {window.location.href = 'event.php?do=show&e=72'}); var m140 = L.marker([54.861937857897, 69.127940386534], {title: '140'}).addTo(markers);
+						$(m140).click(function () {window.location.href = 'event.php?do=show&e=140'}); var m159 = L.marker([54.856308726388896, 69.13289397954941], {title: '159'}).addTo(markers);
+						$(m159).click(function () {window.location.href = 'event.php?do=show&e=159'}); var m75 = L.marker([54.906727175, 69.146384475], {title: '75'}).addTo(markers);
+						$(m75).click(function () {window.location.href = 'event.php?do=show&e=75'}); var m172 = L.marker([54.870188056088, 69.205089658499], {title: '172'}).addTo(markers);
+						$(m172).click(function () {window.location.href = 'event.php?do=show&e=172'}); var m84 = L.marker([54.870215075, 69.1285431], {title: '84'}).addTo(markers);
+						$(m84).click(function () {window.location.href = 'event.php?do=show&e=84'}); var m80 = L.marker([54.8534166, 69.108401725], {title: '80'}).addTo(markers);
+						$(m80).click(function () {window.location.href = 'event.php?do=show&e=80'}); var m87 = L.marker([54.87987, 69.13662774], {title: '87'}).addTo(markers);
+						$(m87).click(function () {window.location.href = 'event.php?do=show&e=87'}); var m83 = L.marker([54.870215075, 69.1285431], {title: '83'}).addTo(markers);
+						$(m83).click(function () {window.location.href = 'event.php?do=show&e=83'}); var m92 = L.marker([54.85316819515764, 69.1668963432312], {title: '92'}).addTo(markers);
+						$(m92).click(function () {window.location.href = 'event.php?do=show&e=92'}); var m455 = L.marker([54.92511353557916, 69.14128929376602], {title: '455'}).addTo(markers);
+						$(m455).click(function () {window.location.href = 'event.php?do=show&e=455'}); var m155 = L.marker([54.67489799490685, 67.13996171951294], {title: '155'}).addTo(markers);
+						$(m155).click(function () {window.location.href = 'event.php?do=show&e=155'}); var m398 = L.marker([54.89308345, 69.142905375], {title: '398'}).addTo(markers);
+						$(m398).click(function () {window.location.href = 'event.php?do=show&e=398'}); var m95 = L.marker([54.870875493028, 69.20712304141489], {title: '95'}).addTo(markers);
+						$(m95).click(function () {window.location.href = 'event.php?do=show&e=95'}); var m154 = L.marker([54.87832825, 69.1118129], {title: '154'}).addTo(markers);
+						$(m154).click(function () {window.location.href = 'event.php?do=show&e=154'}); var m144 = L.marker([54.896639558455725, 69.13637816905975], {title: '144'}).addTo(markers);
+						$(m144).click(function () {window.location.href = 'event.php?do=show&e=144'}); var m97 = L.marker([54.8511306, 69.154170775], {title: '97'}).addTo(markers);
+						$(m97).click(function () {window.location.href = 'event.php?do=show&e=97'}); var m235 = L.marker([54.86019377, 69.17326668], {title: '235'}).addTo(markers);
+						$(m235).click(function () {window.location.href = 'event.php?do=show&e=235'}); var m91 = L.marker([54.86781574160811, 69.11409974098206], {title: '91'}).addTo(markers);
+						$(m91).click(function () {window.location.href = 'event.php?do=show&e=91'}); var m90 = L.marker([54.8557934, 69.1212796], {title: '90'}).addTo(markers);
+						$(m90).click(function () {window.location.href = 'event.php?do=show&e=90'}); var m226 = L.marker([54.83727959844342, 69.26848769187927], {title: '226'}).addTo(markers);
+						$(m226).click(function () {window.location.href = 'event.php?do=show&e=226'}); var m169 = L.marker([54.905663514087244, 69.21756327152252], {title: '169'}).addTo(markers);
+						$(m169).click(function () {window.location.href = 'event.php?do=show&e=169'}); var m259 = L.marker([54.90422372, 69.1411976], {title: '259'}).addTo(markers);
+						$(m259).click(function () {window.location.href = 'event.php?do=show&e=259'}); var m148 = L.marker([54.87832825, 69.1118129], {title: '148'}).addTo(markers);
+						$(m148).click(function () {window.location.href = 'event.php?do=show&e=148'}); var m103 = L.marker([54.873861525, 69.1097839], {title: '103'}).addTo(markers);
+						$(m103).click(function () {window.location.href = 'event.php?do=show&e=103'}); var m98 = L.marker([54.858118125, 69.113652875], {title: '98'}).addTo(markers);
+						$(m98).click(function () {window.location.href = 'event.php?do=show&e=98'}); var m503 = L.marker([54.845471779135444, 69.16585564613342], {title: '503'}).addTo(markers);
+						$(m503).click(function () {window.location.href = 'event.php?do=show&e=503'}); var m244 = L.marker([54.86019377, 69.17326668], {title: '244'}).addTo(markers);
+						$(m244).click(function () {window.location.href = 'event.php?do=show&e=244'}); var m114 = L.marker([54.906727175, 69.146384475], {title: '114'}).addTo(markers);
+						$(m114).click(function () {window.location.href = 'event.php?do=show&e=114'}); var m300 = L.marker([54.908452407143, 69.137733407143], {title: '300'}).addTo(markers);
+						$(m300).click(function () {window.location.href = 'event.php?do=show&e=300'}); var m76 = L.marker([54.86790915, 69.1324326], {title: '76'}).addTo(markers);
+						$(m76).click(function () {window.location.href = 'event.php?do=show&e=76'}); var m102 = L.marker([54.87087178883123, 69.20724105861154], {title: '102'}).addTo(markers);
+						$(m102).click(function () {window.location.href = 'event.php?do=show&e=102'}); var m112 = L.marker([54.866310725, 69.1468732], {title: '112'}).addTo(markers);
+						$(m112).click(function () {window.location.href = 'event.php?do=show&e=112'}); var m145 = L.marker([54.90786552603845, 69.14277791976929], {title: '145'}).addTo(markers);
+						$(m145).click(function () {window.location.href = 'event.php?do=show&e=145'}); var m173 = L.marker([54.84888778543813, 69.25592958927155], {title: '173'}).addTo(markers);
+						$(m173).click(function () {window.location.href = 'event.php?do=show&e=173'}); var m262 = L.marker([54.97253978364295, 69.1374135017395], {title: '262'}).addTo(markers);
+						$(m262).click(function () {window.location.href = 'event.php?do=show&e=262'}); var m208 = L.marker([54.8687758, 69.14019095], {title: '208'}).addTo(markers);
+						$(m208).click(function () {window.location.href = 'event.php?do=show&e=208'}); var m175 = L.marker([54.91081368958105, 69.00851726531982], {title: '175'}).addTo(markers);
+						$(m175).click(function () {window.location.href = 'event.php?do=show&e=175'}); var m174 = L.marker([54.880063229331036, 69.152272939682], {title: '174'}).addTo(markers);
+						$(m174).click(function () {window.location.href = 'event.php?do=show&e=174'}); var m229 = L.marker([54.891484083333, 69.151080508333], {title: '229'}).addTo(markers);
+						$(m229).click(function () {window.location.href = 'event.php?do=show&e=229'}); var m183 = L.marker([54.88959196552239, 69.10269498825073], {title: '183'}).addTo(markers);
+						$(m183).click(function () {window.location.href = 'event.php?do=show&e=183'}); var m296 = L.marker([54.860791356856, 69.174062793071], {title: '296'}).addTo(markers);
+						$(m296).click(function () {window.location.href = 'event.php?do=show&e=296'}); var m190 = L.marker([54.86156216180804, 69.13366109132767], {title: '190'}).addTo(markers);
+						$(m190).click(function () {window.location.href = 'event.php?do=show&e=190'}); var m224 = L.marker([54.8668985, 69.1271005875], {title: '224'}).addTo(markers);
+						$(m224).click(function () {window.location.href = 'event.php?do=show&e=224'}); var m243 = L.marker([54.86332694518968, 69.12834227085114], {title: '243'}).addTo(markers);
+						$(m243).click(function () {window.location.href = 'event.php?do=show&e=243'}); var m181 = L.marker([54.87700245, 69.1062667], {title: '181'}).addTo(markers);
+						$(m181).click(function () {window.location.href = 'event.php?do=show&e=181'}); var m231 = L.marker([54.90649622184367, 69.14712846279144], {title: '231'}).addTo(markers);
+						$(m231).click(function () {window.location.href = 'event.php?do=show&e=231'}); var m182 = L.marker([54.87955093421758, 69.15050804615021], {title: '182'}).addTo(markers);
+						$(m182).click(function () {window.location.href = 'event.php?do=show&e=182'}); var m211 = L.marker([54.908472825, 69.151535025], {title: '211'}).addTo(markers);
+						$(m211).click(function () {window.location.href = 'event.php?do=show&e=211'}); var m185 = L.marker([54.86395306036503, 69.15575337436167], {title: '185'}).addTo(markers);
+						$(m185).click(function () {window.location.href = 'event.php?do=show&e=185'}); var m242 = L.marker([54.87172990992638, 69.20854032039642], {title: '242'}).addTo(markers);
+						$(m242).click(function () {window.location.href = 'event.php?do=show&e=242'}); var m247 = L.marker([54.90734545, 69.13865415], {title: '247'}).addTo(markers);
+						$(m247).click(function () {window.location.href = 'event.php?do=show&e=247'}); var m195 = L.marker([54.904178167398854, 69.13760393857956], {title: '195'}).addTo(markers);
+						$(m195).click(function () {window.location.href = 'event.php?do=show&e=195'}); var m186 = L.marker([54.852912725, 69.16927455], {title: '186'}).addTo(markers);
+						$(m186).click(function () {window.location.href = 'event.php?do=show&e=186'}); var m246 = L.marker([54.891641830353336, 69.14221197366713], {title: '246'}).addTo(markers);
+						$(m246).click(function () {window.location.href = 'event.php?do=show&e=246'}); var m547 = L.marker([54.844096492396, 69.20317389071], {title: '547'}).addTo(markers);
+						$(m547).click(function () {window.location.href = 'event.php?do=show&e=547'}); var m332 = L.marker([54.867316175, 69.14493785], {title: '332'}).addTo(markers);
+						$(m332).click(function () {window.location.href = 'event.php?do=show&e=332'}); var m257 = L.marker([54.90736795, 69.1379479], {title: '257'}).addTo(markers);
+						$(m257).click(function () {window.location.href = 'event.php?do=show&e=257'}); var m234 = L.marker([54.97255209967894, 69.13742423057556], {title: '234'}).addTo(markers);
+						$(m234).click(function () {window.location.href = 'event.php?do=show&e=234'}); var m249 = L.marker([54.867316175, 69.14493785], {title: '249'}).addTo(markers);
+						$(m249).click(function () {window.location.href = 'event.php?do=show&e=249'}); var m510 = L.marker([54.87719525, 69.145142675], {title: '510'}).addTo(markers);
+						$(m510).click(function () {window.location.href = 'event.php?do=show&e=510'}); var m198 = L.marker([54.90802705, 69.13407975], {title: '198'}).addTo(markers);
+						$(m198).click(function () {window.location.href = 'event.php?do=show&e=198'}); var m245 = L.marker([54.906727175, 69.146384475], {title: '245'}).addTo(markers);
+						$(m245).click(function () {window.location.href = 'event.php?do=show&e=245'}); var m272 = L.marker([54.92039188014669, 69.12978261709213], {title: '272'}).addTo(markers);
+						$(m272).click(function () {window.location.href = 'event.php?do=show&e=272'}); var m212 = L.marker([54.908472825, 69.151535025], {title: '212'}).addTo(markers);
+						$(m212).click(function () {window.location.href = 'event.php?do=show&e=212'}); var m522 = L.marker([54.86861375, 69.15323925], {title: '522'}).addTo(markers);
+						$(m522).click(function () {window.location.href = 'event.php?do=show&e=522'}); var m219 = L.marker([54.86019377, 69.17326668], {title: '219'}).addTo(markers);
+						$(m219).click(function () {window.location.href = 'event.php?do=show&e=219'}); var m228 = L.marker([54.862422719449, 69.118317514658], {title: '228'}).addTo(markers);
+						$(m228).click(function () {window.location.href = 'event.php?do=show&e=228'}); var m209 = L.marker([54.8687758, 69.14019095], {title: '209'}).addTo(markers);
+						$(m209).click(function () {window.location.href = 'event.php?do=show&e=209'}); var m199 = L.marker([54.90849465018794, 69.14214491844177], {title: '199'}).addTo(markers);
+						$(m199).click(function () {window.location.href = 'event.php?do=show&e=199'}); var m230 = L.marker([54.90480919971202, 69.14096742868423], {title: '230'}).addTo(markers);
+						$(m230).click(function () {window.location.href = 'event.php?do=show&e=230'}); var m223 = L.marker([54.8735664, 69.1556404], {title: '223'}).addTo(markers);
+						$(m223).click(function () {window.location.href = 'event.php?do=show&e=223'}); var m233 = L.marker([54.85485215, 69.177017591667], {title: '233'}).addTo(markers);
+						$(m233).click(function () {window.location.href = 'event.php?do=show&e=233'}); var m205 = L.marker([54.8646177, 69.1323535], {title: '205'}).addTo(markers);
+						$(m205).click(function () {window.location.href = 'event.php?do=show&e=205'}); var m200 = L.marker([54.869116133211, 69.2066372931], {title: '200'}).addTo(markers);
+						$(m200).click(function () {window.location.href = 'event.php?do=show&e=200'}); var m215 = L.marker([54.869114875, 69.146750225], {title: '215'}).addTo(markers);
+						$(m215).click(function () {window.location.href = 'event.php?do=show&e=215'}); var m213 = L.marker([54.908472825, 69.151535025], {title: '213'}).addTo(markers);
+						$(m213).click(function () {window.location.href = 'event.php?do=show&e=213'}); var m250 = L.marker([54.9356658930935, 69.13622260093689], {title: '250'}).addTo(markers);
+						$(m250).click(function () {window.location.href = 'event.php?do=show&e=250'}); var m319 = L.marker([54.73292195317827, 69.341561794281], {title: '319'}).addTo(markers);
+						$(m319).click(function () {window.location.href = 'event.php?do=show&e=319'}); var m254 = L.marker([54.871763348829, 69.208305180073], {title: '254'}).addTo(markers);
+						$(m254).click(function () {window.location.href = 'event.php?do=show&e=254'}); var m225 = L.marker([54.870188056088, 69.205089658499], {title: '225'}).addTo(markers);
+						$(m225).click(function () {window.location.href = 'event.php?do=show&e=225'}); var m217 = L.marker([54.8668985, 69.1271005875], {title: '217'}).addTo(markers);
+						$(m217).click(function () {window.location.href = 'event.php?do=show&e=217'}); var m221 = L.marker([54.867316175, 69.14493785], {title: '221'}).addTo(markers);
+						$(m221).click(function () {window.location.href = 'event.php?do=show&e=221'}); var m431 = L.marker([54.90553027921021, 69.15393590927123], {title: '431'}).addTo(markers);
+						$(m431).click(function () {window.location.href = 'event.php?do=show&e=431'}); var m222 = L.marker([54.868306576929456, 69.11699384450911], {title: '222'}).addTo(markers);
+						$(m222).click(function () {window.location.href = 'event.php?do=show&e=222'}); var m298 = L.marker([54.900393528571, 69.1416926], {title: '298'}).addTo(markers);
+						$(m298).click(function () {window.location.href = 'event.php?do=show&e=298'}); var m328 = L.marker([54.869116133211, 69.2066372931], {title: '328'}).addTo(markers);
+						$(m328).click(function () {window.location.href = 'event.php?do=show&e=328'}); var m473 = L.marker([54.853820948558, 69.106201976538], {title: '473'}).addTo(markers);
+						$(m473).click(function () {window.location.href = 'event.php?do=show&e=473'}); var m511 = L.marker([54.8770619, 69.12100685], {title: '511'}).addTo(markers);
+						$(m511).click(function () {window.location.href = 'event.php?do=show&e=511'}); var m263 = L.marker([54.880840917899185, 69.14675831794739], {title: '263'}).addTo(markers);
+						$(m263).click(function () {window.location.href = 'event.php?do=show&e=263'}); var m295 = L.marker([54.875059740637425, 69.15307223796844], {title: '295'}).addTo(markers);
+						$(m295).click(function () {window.location.href = 'event.php?do=show&e=295'}); var m309 = L.marker([54.859414416667, 69.146132125], {title: '309'}).addTo(markers);
+						$(m309).click(function () {window.location.href = 'event.php?do=show&e=309'}); var m321 = L.marker([54.85755935, 69.16803545], {title: '321'}).addTo(markers);
+						$(m321).click(function () {window.location.href = 'event.php?do=show&e=321'}); var m274 = L.marker([54.8906672, 69.1389079], {title: '274'}).addTo(markers);
+						$(m274).click(function () {window.location.href = 'event.php?do=show&e=274'}); var m265 = L.marker([54.9201205, 69.13683395], {title: '265'}).addTo(markers);
+						$(m265).click(function () {window.location.href = 'event.php?do=show&e=265'}); var m266 = L.marker([54.90603607579714, 69.14875924587248], {title: '266'}).addTo(markers);
+						$(m266).click(function () {window.location.href = 'event.php?do=show&e=266'}); var m306 = L.marker([54.870188056088, 69.205089658499], {title: '306'}).addTo(markers);
+						$(m306).click(function () {window.location.href = 'event.php?do=show&e=306'}); var m292 = L.marker([54.97249051946118, 69.13739204406738], {title: '292'}).addTo(markers);
+						$(m292).click(function () {window.location.href = 'event.php?do=show&e=292'}); var m294 = L.marker([54.89795888, 69.14169685], {title: '294'}).addTo(markers);
+						$(m294).click(function () {window.location.href = 'event.php?do=show&e=294'}); var m267 = L.marker([54.925085791768836, 69.14149045944214], {title: '267'}).addTo(markers);
+						$(m267).click(function () {window.location.href = 'event.php?do=show&e=267'}); var m280 = L.marker([54.855336325, 69.131494075], {title: '280'}).addTo(markers);
+						$(m280).click(function () {window.location.href = 'event.php?do=show&e=280'}); var m500 = L.marker([54.868628575, 69.11400555], {title: '500'}).addTo(markers);
+						$(m500).click(function () {window.location.href = 'event.php?do=show&e=500'}); var m289 = L.marker([54.908472825, 69.151535025], {title: '289'}).addTo(markers);
+						$(m289).click(function () {window.location.href = 'event.php?do=show&e=289'}); var m308 = L.marker([54.890616175, 69.14019105], {title: '308'}).addTo(markers);
+						$(m308).click(function () {window.location.href = 'event.php?do=show&e=308'}); var m278 = L.marker([54.88589799625156, 69.14962828159332], {title: '278'}).addTo(markers);
+						$(m278).click(function () {window.location.href = 'event.php?do=show&e=278'}); var m329 = L.marker([54.881890975, 69.10192905], {title: '329'}).addTo(markers);
+						$(m329).click(function () {window.location.href = 'event.php?do=show&e=329'}); var m273 = L.marker([54.92107753489012, 69.1293078660965], {title: '273'}).addTo(markers);
+						$(m273).click(function () {window.location.href = 'event.php?do=show&e=273'}); var m317 = L.marker([54.89369344192264, 69.13782924413681], {title: '317'}).addTo(markers);
+						$(m317).click(function () {window.location.href = 'event.php?do=show&e=317'}); var m349 = L.marker([54.867316175, 69.14493785], {title: '349'}).addTo(markers);
+						$(m349).click(function () {window.location.href = 'event.php?do=show&e=349'}); var m356 = L.marker([54.865218225, 69.1661548], {title: '356'}).addTo(markers);
+						$(m356).click(function () {window.location.href = 'event.php?do=show&e=356'}); var m301 = L.marker([54.8646177, 69.1323535], {title: '301'}).addTo(markers);
+						$(m301).click(function () {window.location.href = 'event.php?do=show&e=301'}); var m277 = L.marker([54.860791356856, 69.174062793071], {title: '277'}).addTo(markers);
+						$(m277).click(function () {window.location.href = 'event.php?do=show&e=277'}); var m320 = L.marker([54.908472825, 69.151535025], {title: '320'}).addTo(markers);
+						$(m320).click(function () {window.location.href = 'event.php?do=show&e=320'}); var m335 = L.marker([54.870188056088, 69.205089658499], {title: '335'}).addTo(markers);
+						$(m335).click(function () {window.location.href = 'event.php?do=show&e=335'}); var m275 = L.marker([54.890616175, 69.14019105], {title: '275'}).addTo(markers);
+						$(m275).click(function () {window.location.href = 'event.php?do=show&e=275'}); var m270 = L.marker([54.866122075, 69.1376542], {title: '270'}).addTo(markers);
+						$(m270).click(function () {window.location.href = 'event.php?do=show&e=270'}); var m303 = L.marker([54.891589, 69.1428508], {title: '303'}).addTo(markers);
+						$(m303).click(function () {window.location.href = 'event.php?do=show&e=303'}); var m288 = L.marker([54.865218225, 69.1661548], {title: '288'}).addTo(markers);
+						$(m288).click(function () {window.location.href = 'event.php?do=show&e=288'}); var m333 = L.marker([54.881890975, 69.10192905], {title: '333'}).addTo(markers);
+						$(m333).click(function () {window.location.href = 'event.php?do=show&e=333'}); var m284 = L.marker([54.8559536125, 69.1321198], {title: '284'}).addTo(markers);
+						$(m284).click(function () {window.location.href = 'event.php?do=show&e=284'}); var m318 = L.marker([54.84143149966288, 69.26525831222534], {title: '318'}).addTo(markers);
+						$(m318).click(function () {window.location.href = 'event.php?do=show&e=318'}); var m368 = L.marker([54.910419025, 69.141799375], {title: '368'}).addTo(markers);
+						$(m368).click(function () {window.location.href = 'event.php?do=show&e=368'}); var m629 = L.marker([54.86331089083505, 69.13070368765148], {title: '629'}).addTo(markers);
+						$(m629).click(function () {window.location.href = 'event.php?do=show&e=629'}); var m282 = L.marker([54.872096457842, 69.203323423862], {title: '282'}).addTo(markers);
+						$(m282).click(function () {window.location.href = 'event.php?do=show&e=282'}); var m302 = L.marker([54.872010801712094, 69.20853763818741], {title: '302'}).addTo(markers);
+						$(m302).click(function () {window.location.href = 'event.php?do=show&e=302'}); var m291 = L.marker([54.8706680595571, 69.19948250055313], {title: '291'}).addTo(markers);
+						$(m291).click(function () {window.location.href = 'event.php?do=show&e=291'}); var m311 = L.marker([54.858156875, 69.128688825], {title: '311'}).addTo(markers);
+						$(m311).click(function () {window.location.href = 'event.php?do=show&e=311'}); var m316 = L.marker([54.891589, 69.1428508], {title: '316'}).addTo(markers);
+						$(m316).click(function () {window.location.href = 'event.php?do=show&e=316'}); var m339 = L.marker([54.8607003, 69.13149315], {title: '339'}).addTo(markers);
+						$(m339).click(function () {window.location.href = 'event.php?do=show&e=339'}); var m357 = L.marker([54.859235963035395, 69.17326658964157], {title: '357'}).addTo(markers);
+						$(m357).click(function () {window.location.href = 'event.php?do=show&e=357'}); var m290 = L.marker([54.86019377, 69.17326668], {title: '290'}).addTo(markers);
+						$(m290).click(function () {window.location.href = 'event.php?do=show&e=290'}); var m323 = L.marker([54.85361265, 69.1886606], {title: '323'}).addTo(markers);
+						$(m323).click(function () {window.location.href = 'event.php?do=show&e=323'}); var m327 = L.marker([54.872096457842, 69.203323423862], {title: '327'}).addTo(markers);
+						$(m327).click(function () {window.location.href = 'event.php?do=show&e=327'}); var m325 = L.marker([54.8612837, 69.1748273], {title: '325'}).addTo(markers);
+						$(m325).click(function () {window.location.href = 'event.php?do=show&e=325'}); var m513 = L.marker([54.861902094207, 69.132600724697], {title: '513'}).addTo(markers);
+						$(m513).click(function () {window.location.href = 'event.php?do=show&e=513'}); var m336 = L.marker([54.97460882470729, 69.12100106477736], {title: '336'}).addTo(markers);
+						$(m336).click(function () {window.location.href = 'event.php?do=show&e=336'}); var m365 = L.marker([54.908472825, 69.151535025], {title: '365'}).addTo(markers);
+						$(m365).click(function () {window.location.href = 'event.php?do=show&e=365'}); var m389 = L.marker([54.88183707795889, 69.12608921527863], {title: '389'}).addTo(markers);
+						$(m389).click(function () {window.location.href = 'event.php?do=show&e=389'}); var m384 = L.marker([54.87836175, 69.1401849], {title: '384'}).addTo(markers);
+						$(m384).click(function () {window.location.href = 'event.php?do=show&e=384'}); var m430 = L.marker([54.87266826604158, 69.13581490516663], {title: '430'}).addTo(markers);
+						$(m430).click(function () {window.location.href = 'event.php?do=show&e=430'}); var m337 = L.marker([54.881890975, 69.10192905], {title: '337'}).addTo(markers);
+						$(m337).click(function () {window.location.href = 'event.php?do=show&e=337'}); var m1195 = L.marker([54.8600494, 69.146633825], {title: '1195'}).addTo(markers);
+						$(m1195).click(function () {window.location.href = 'event.php?do=show&e=1195'}); var m362 = L.marker([54.91098637865903, 69.14782583713531], {title: '362'}).addTo(markers);
+						$(m362).click(function () {window.location.href = 'event.php?do=show&e=362'}); var m376 = L.marker([54.870188056088, 69.205089658499], {title: '376'}).addTo(markers);
+						$(m376).click(function () {window.location.href = 'event.php?do=show&e=376'}); var m408 = L.marker([54.89309061834591, 69.14226561784744], {title: '408'}).addTo(markers);
+						$(m408).click(function () {window.location.href = 'event.php?do=show&e=408'}); var m338 = L.marker([54.85232820829017, 69.16456282138824], {title: '338'}).addTo(markers);
+						$(m338).click(function () {window.location.href = 'event.php?do=show&e=338'}); var m74 = L.marker([54.875281833333, 69.154409566667], {title: '74'}).addTo(markers);
+						$(m74).click(function () {window.location.href = 'event.php?do=show&e=74'}); var m343 = L.marker([54.859214349197394, 69.17328268289566], {title: '343'}).addTo(markers);
+						$(m343).click(function () {window.location.href = 'event.php?do=show&e=343'}); var m428 = L.marker([54.89302583124038, 69.14248019456863], {title: '428'}).addTo(markers);
+						$(m428).click(function () {window.location.href = 'event.php?do=show&e=428'}); var m675 = L.marker([54.86854886, 69.157909805], {title: '675'}).addTo(markers);
+						$(m675).click(function () {window.location.href = 'event.php?do=show&e=675'}); var m9 = L.marker([54.866052233779, 69.132137596607], {title: '9'}).addTo(markers);
+						$(m9).click(function () {window.location.href = 'event.php?do=show&e=9'}); var m388 = L.marker([54.872706675, 69.144680725], {title: '388'}).addTo(markers);
+						$(m388).click(function () {window.location.href = 'event.php?do=show&e=388'}); var m478 = L.marker([54.879331818054084, 69.1409620642662], {title: '478'}).addTo(markers);
+						$(m478).click(function () {window.location.href = 'event.php?do=show&e=478'}); var m1 = L.marker([54.865697375, 69.1451206], {title: '1'}).addTo(markers);
+						$(m1).click(function () {window.location.href = 'event.php?do=show&e=1'}); var m4 = L.marker([54.87524745, 69.12390625], {title: '4'}).addTo(markers);
+						$(m4).click(function () {window.location.href = 'event.php?do=show&e=4'}); var m344 = L.marker([54.852837625, 69.167175725], {title: '344'}).addTo(markers);
+						$(m344).click(function () {window.location.href = 'event.php?do=show&e=344'}); var m639 = L.marker([54.872096457842, 69.203323423862], {title: '639'}).addTo(markers);
+						$(m639).click(function () {window.location.href = 'event.php?do=show&e=639'}); var m489 = L.marker([54.8751554, 69.1322238], {title: '489'}).addTo(markers);
+						$(m489).click(function () {window.location.href = 'event.php?do=show&e=489'}); var m385 = L.marker([54.868213966824, 69.208508133888], {title: '385'}).addTo(markers);
+						$(m385).click(function () {window.location.href = 'event.php?do=show&e=385'}); var m363 = L.marker([54.908291111097824, 69.1505241394043], {title: '363'}).addTo(markers);
+						$(m363).click(function () {window.location.href = 'event.php?do=show&e=363'}); var m348 = L.marker([54.84975185, 69.12174365], {title: '348'}).addTo(markers);
+						$(m348).click(function () {window.location.href = 'event.php?do=show&e=348'}); var m480 = L.marker([54.846482403473416, 69.08714675890224], {title: '480'}).addTo(markers);
+						$(m480).click(function () {window.location.href = 'event.php?do=show&e=480'}); var m436 = L.marker([54.8600494, 69.146633825], {title: '436'}).addTo(markers);
+						$(m436).click(function () {window.location.href = 'event.php?do=show&e=436'}); var m297 = L.marker([54.860791356856, 69.174062793071], {title: '297'}).addTo(markers);
+						$(m297).click(function () {window.location.href = 'event.php?do=show&e=297'}); var m367 = L.marker([54.91978267346863, 69.13002669811249], {title: '367'}).addTo(markers);
+						$(m367).click(function () {window.location.href = 'event.php?do=show&e=367'}); var m364 = L.marker([54.907878283333, 69.151214433333], {title: '364'}).addTo(markers);
+						$(m364).click(function () {window.location.href = 'event.php?do=show&e=364'}); var m392 = L.marker([54.8905978, 69.1502808], {title: '392'}).addTo(markers);
+						$(m392).click(function () {window.location.href = 'event.php?do=show&e=392'}); var m351 = L.marker([54.844038576446465, 69.15594220161438], {title: '351'}).addTo(markers);
+						$(m351).click(function () {window.location.href = 'event.php?do=show&e=351'}); var m373 = L.marker([54.868048175, 69.121602675], {title: '373'}).addTo(markers);
+						$(m373).click(function () {window.location.href = 'event.php?do=show&e=373'}); var m662 = L.marker([54.970041725, 69.13271425], {title: '662'}).addTo(markers);
+						$(m662).click(function () {window.location.href = 'event.php?do=show&e=662'}); var m377 = L.marker([54.868628575, 69.11400555], {title: '377'}).addTo(markers);
+						$(m377).click(function () {window.location.href = 'event.php?do=show&e=377'}); var m1110 = L.marker([54.94668009880059, 69.16677832603455], {title: '1110'}).addTo(markers);
+						$(m1110).click(function () {window.location.href = 'event.php?do=show&e=1110'}); var m601 = L.marker([54.880125625, 69.1280147], {title: '601'}).addTo(markers);
+						$(m601).click(function () {window.location.href = 'event.php?do=show&e=601'}); var m409 = L.marker([54.86774475, 69.1147908], {title: '409'}).addTo(markers);
+						$(m409).click(function () {window.location.href = 'event.php?do=show&e=409'}); var m401 = L.marker([54.87948921147514, 69.15190011262894], {title: '401'}).addTo(markers);
+						$(m401).click(function () {window.location.href = 'event.php?do=show&e=401'}); var m404 = L.marker([54.86333620731991, 69.15614980465762], {title: '404'}).addTo(markers);
+						$(m404).click(function () {window.location.href = 'event.php?do=show&e=404'}); var m387 = L.marker([54.8479093, 69.178598525], {title: '387'}).addTo(markers);
+						$(m387).click(function () {window.location.href = 'event.php?do=show&e=387'}); var m402 = L.marker([54.890616175, 69.14019105], {title: '402'}).addTo(markers);
+						$(m402).click(function () {window.location.href = 'event.php?do=show&e=402'}); var m399 = L.marker([54.89308345, 69.142905375], {title: '399'}).addTo(markers);
+						$(m399).click(function () {window.location.href = 'event.php?do=show&e=399'}); var m405 = L.marker([54.91686887741377, 69.17304074777347], {title: '405'}).addTo(markers);
+						$(m405).click(function () {window.location.href = 'event.php?do=show&e=405'}); var m425 = L.marker([54.868984464706, 69.125440670588], {title: '425'}).addTo(markers);
+						$(m425).click(function () {window.location.href = 'event.php?do=show&e=425'}); var m525 = L.marker([54.861171898394815, 69.1351979970932], {title: '525'}).addTo(markers);
+						$(m525).click(function () {window.location.href = 'event.php?do=show&e=525'}); var m406 = L.marker([54.864103908333, 69.13713565], {title: '406'}).addTo(markers);
+						$(m406).click(function () {window.location.href = 'event.php?do=show&e=406'}); var m427 = L.marker([54.868984464706, 69.125440670588], {title: '427'}).addTo(markers);
+						$(m427).click(function () {window.location.href = 'event.php?do=show&e=427'}); var m106 = L.marker([54.84612349886543, 69.18743401765822], {title: '106'}).addTo(markers);
+						$(m106).click(function () {window.location.href = 'event.php?do=show&e=106'}); var m426 = L.marker([54.868984464706, 69.125440670588], {title: '426'}).addTo(markers);
+						$(m426).click(function () {window.location.href = 'event.php?do=show&e=426'}); var m400 = L.marker([54.89369395, 69.138303825], {title: '400'}).addTo(markers);
+						$(m400).click(function () {window.location.href = 'event.php?do=show&e=400'}); var m624 = L.marker([54.89231805, 69.1426003], {title: '624'}).addTo(markers);
+						$(m624).click(function () {window.location.href = 'event.php?do=show&e=624'}); var m421 = L.marker([54.8732657, 69.13662855], {title: '421'}).addTo(markers);
+						$(m421).click(function () {window.location.href = 'event.php?do=show&e=421'}); var m13 = L.marker([54.87833497877865, 69.15144681930542], {title: '13'}).addTo(markers);
+						$(m13).click(function () {window.location.href = 'event.php?do=show&e=13'}); var m435 = L.marker([54.8600494, 69.146633825], {title: '435'}).addTo(markers);
+						$(m435).click(function () {window.location.href = 'event.php?do=show&e=435'}); var m512 = L.marker([54.87719525, 69.145142675], {title: '512'}).addTo(markers);
+						$(m512).click(function () {window.location.href = 'event.php?do=show&e=512'}); var m519 = L.marker([54.855336325, 69.131494075], {title: '519'}).addTo(markers);
+						$(m519).click(function () {window.location.href = 'event.php?do=show&e=519'}); var m410 = L.marker([54.8766389, 69.1394153], {title: '410'}).addTo(markers);
+						$(m410).click(function () {window.location.href = 'event.php?do=show&e=410'}); var m407 = L.marker([54.84467685, 69.1577385], {title: '407'}).addTo(markers);
+						$(m407).click(function () {window.location.href = 'event.php?do=show&e=407'}); var m414 = L.marker([54.8479093, 69.178598525], {title: '414'}).addTo(markers);
+						$(m414).click(function () {window.location.href = 'event.php?do=show&e=414'}); var m508 = L.marker([54.8737412, 69.1339723], {title: '508'}).addTo(markers);
+						$(m508).click(function () {window.location.href = 'event.php?do=show&e=508'}); var m419 = L.marker([54.85980100640452, 69.14599388837814], {title: '419'}).addTo(markers);
+						$(m419).click(function () {window.location.href = 'event.php?do=show&e=419'}); var m403 = L.marker([54.89357312473019, 69.13797944784164], {title: '403'}).addTo(markers);
+						$(m403).click(function () {window.location.href = 'event.php?do=show&e=403'}); var m58 = L.marker([54.87952933126848, 69.13660079240799], {title: '58'}).addTo(markers);
+						$(m58).click(function () {window.location.href = 'event.php?do=show&e=58'}); var m411 = L.marker([54.89274365, 69.1466122], {title: '411'}).addTo(markers);
+						$(m411).click(function () {window.location.href = 'event.php?do=show&e=411'}); var m417 = L.marker([54.91672046878338, 69.17280471338017], {title: '417'}).addTo(markers);
+						$(m417).click(function () {window.location.href = 'event.php?do=show&e=417'}); var m505 = L.marker([54.867316175, 69.14493785], {title: '505'}).addTo(markers);
+						$(m505).click(function () {window.location.href = 'event.php?do=show&e=505'}); var m665 = L.marker([54.90922165, 69.135291625], {title: '665'}).addTo(markers);
+						$(m665).click(function () {window.location.href = 'event.php?do=show&e=665'}); var m516 = L.marker([54.865573282609, 69.1401964], {title: '516'}).addTo(markers);
+						$(m516).click(function () {window.location.href = 'event.php?do=show&e=516'}); var m449 = L.marker([54.9039453, 69.1420092], {title: '449'}).addTo(markers);
+						$(m449).click(function () {window.location.href = 'event.php?do=show&e=449'}); var m444 = L.marker([54.900393528571, 69.1416926], {title: '444'}).addTo(markers);
+						$(m444).click(function () {window.location.href = 'event.php?do=show&e=444'}); var m535 = L.marker([54.87719525, 69.145142675], {title: '535'}).addTo(markers);
+						$(m535).click(function () {window.location.href = 'event.php?do=show&e=535'}); var m438 = L.marker([54.88959196552239, 69.6828031539917], {title: '438'}).addTo(markers);
+						$(m438).click(function () {window.location.href = 'event.php?do=show&e=438'}); var m551 = L.marker([54.925032945665, 69.139196021216], {title: '551'}).addTo(markers);
+						$(m551).click(function () {window.location.href = 'event.php?do=show&e=551'}); var m463 = L.marker([54.860791356856, 69.174062793071], {title: '463'}).addTo(markers);
+						$(m463).click(function () {window.location.href = 'event.php?do=show&e=463'}); var m450 = L.marker([54.9039453, 69.1420092], {title: '450'}).addTo(markers);
+						$(m450).click(function () {window.location.href = 'event.php?do=show&e=450'}); var m608 = L.marker([54.8905978, 69.1502808], {title: '608'}).addTo(markers);
+						$(m608).click(function () {window.location.href = 'event.php?do=show&e=608'}); var m453 = L.marker([54.8697645, 69.13982335], {title: '453'}).addTo(markers);
+						$(m453).click(function () {window.location.href = 'event.php?do=show&e=453'}); var m456 = L.marker([54.92511353557916, 69.14128929376602], {title: '456'}).addTo(markers);
+						$(m456).click(function () {window.location.href = 'event.php?do=show&e=456'}); var m471 = L.marker([54.866282725, 69.1256064], {title: '471'}).addTo(markers);
+						$(m471).click(function () {window.location.href = 'event.php?do=show&e=471'}); var m459 = L.marker([54.83782579552382, 69.15611171643832], {title: '459'}).addTo(markers);
+						$(m459).click(function () {window.location.href = 'event.php?do=show&e=459'}); var m496 = L.marker([54.89702965, 69.14023905], {title: '496'}).addTo(markers);
+						$(m496).click(function () {window.location.href = 'event.php?do=show&e=496'}); var m433 = L.marker([54.900989875, 69.162499], {title: '433'}).addTo(markers);
+						$(m433).click(function () {window.location.href = 'event.php?do=show&e=433'}); var m507 = L.marker([54.8711645, 69.149593775], {title: '507'}).addTo(markers);
+						$(m507).click(function () {window.location.href = 'event.php?do=show&e=507'}); var m445 = L.marker([54.84675173439389, 69.08813810345237], {title: '445'}).addTo(markers);
+						$(m445).click(function () {window.location.href = 'event.php?do=show&e=445'}); var m460 = L.marker([54.868048175, 69.121602675], {title: '460'}).addTo(markers);
+						$(m460).click(function () {window.location.href = 'event.php?do=show&e=460'}); var m630 = L.marker([54.902833575, 69.15755175], {title: '630'}).addTo(markers);
+						$(m630).click(function () {window.location.href = 'event.php?do=show&e=630'}); var m423 = L.marker([54.8995516, 69.144951625], {title: '423'}).addTo(markers);
+						$(m423).click(function () {window.location.href = 'event.php?do=show&e=423'}); var m464 = L.marker([54.847621116667, 69.1026814], {title: '464'}).addTo(markers);
+						$(m464).click(function () {window.location.href = 'event.php?do=show&e=464'}); var m432 = L.marker([54.89157385, 69.1504229], {title: '432'}).addTo(markers);
+						$(m432).click(function () {window.location.href = 'event.php?do=show&e=432'}); var m452 = L.marker([54.8697645, 69.13982335], {title: '452'}).addTo(markers);
+						$(m452).click(function () {window.location.href = 'event.php?do=show&e=452'}); var m632 = L.marker([54.86656979566045, 69.13606971502304], {title: '632'}).addTo(markers);
+						$(m632).click(function () {window.location.href = 'event.php?do=show&e=632'}); var m457 = L.marker([54.871258863636, 69.121628963636], {title: '457'}).addTo(markers);
+						$(m457).click(function () {window.location.href = 'event.php?do=show&e=457'}); var m458 = L.marker([54.95139990111305, 69.12597656249999], {title: '458'}).addTo(markers);
+						$(m458).click(function () {window.location.href = 'event.php?do=show&e=458'}); var m470 = L.marker([54.92088639130185, 69.12941515445709], {title: '470'}).addTo(markers);
+						$(m470).click(function () {window.location.href = 'event.php?do=show&e=470'}); var m434 = L.marker([54.853820948558, 69.106201976538], {title: '434'}).addTo(markers);
+						$(m434).click(function () {window.location.href = 'event.php?do=show&e=434'}); var m534 = L.marker([54.87098908703719, 69.20186161994934], {title: '534'}).addTo(markers);
+						$(m534).click(function () {window.location.href = 'event.php?do=show&e=534'}); var m475 = L.marker([54.864580400806084, 69.13471788167953], {title: '475'}).addTo(markers);
+						$(m475).click(function () {window.location.href = 'event.php?do=show&e=475'}); var m466 = L.marker([54.923923617193466, 69.14270281791687], {title: '466'}).addTo(markers);
+						$(m466).click(function () {window.location.href = 'event.php?do=show&e=466'}); var m422 = L.marker([54.9172766900055, 69.17629480361937], {title: '422'}).addTo(markers);
+						$(m422).click(function () {window.location.href = 'event.php?do=show&e=422'}); var m179 = L.marker([54.872551813845, 69.119180579628], {title: '179'}).addTo(markers);
+						$(m179).click(function () {window.location.href = 'event.php?do=show&e=179'}); var m476 = L.marker([54.870437125, 69.1525292], {title: '476'}).addTo(markers);
+						$(m476).click(function () {window.location.href = 'event.php?do=show&e=476'}); var m509 = L.marker([54.87719525, 69.145142675], {title: '509'}).addTo(markers);
+						$(m509).click(function () {window.location.href = 'event.php?do=show&e=509'}); var m637 = L.marker([54.872096457842, 69.203323423862], {title: '637'}).addTo(markers);
+						$(m637).click(function () {window.location.href = 'event.php?do=show&e=637'}); var m514 = L.marker([54.90779346, 69.15370058], {title: '514'}).addTo(markers);
+						$(m514).click(function () {window.location.href = 'event.php?do=show&e=514'}); var m625 = L.marker([54.859977791667, 69.165850741667], {title: '625'}).addTo(markers);
+						$(m625).click(function () {window.location.href = 'event.php?do=show&e=625'}); var m454 = L.marker([54.8697645, 69.13982335], {title: '454'}).addTo(markers);
+						$(m454).click(function () {window.location.href = 'event.php?do=show&e=454'}); var m437 = L.marker([54.90761345, 69.149876], {title: '437'}).addTo(markers);
+						$(m437).click(function () {window.location.href = 'event.php?do=show&e=437'}); var m616 = L.marker([54.863247908286965, 69.12972950934545], {title: '616'}).addTo(markers);
+						$(m616).click(function () {window.location.href = 'event.php?do=show&e=616'}); var m605 = L.marker([54.8628823604377, 69.12931859493256], {title: '605'}).addTo(markers);
+						$(m605).click(function () {window.location.href = 'event.php?do=show&e=605'}); var m498 = L.marker([54.865571275, 69.14775565], {title: '498'}).addTo(markers);
+						$(m498).click(function () {window.location.href = 'event.php?do=show&e=498'}); var m119 = L.marker([54.876443625, 69.112281975], {title: '119'}).addTo(markers);
+						$(m119).click(function () {window.location.href = 'event.php?do=show&e=119'}); var m518 = L.marker([54.86717405, 69.142299475], {title: '518'}).addTo(markers);
+						$(m518).click(function () {window.location.href = 'event.php?do=show&e=518'}); var m490 = L.marker([54.923574495507, 69.142405092716], {title: '490'}).addTo(markers);
+						$(m490).click(function () {window.location.href = 'event.php?do=show&e=490'}); var m633 = L.marker([54.863697428738625, 69.13854539394379], {title: '633'}).addTo(markers);
+						$(m633).click(function () {window.location.href = 'event.php?do=show&e=633'}); var m635 = L.marker([54.87400415119696, 69.13952279064688], {title: '635'}).addTo(markers);
+						$(m635).click(function () {window.location.href = 'event.php?do=show&e=635'}); var m520 = L.marker([54.870928075, 69.1437916], {title: '520'}).addTo(markers);
+						$(m520).click(function () {window.location.href = 'event.php?do=show&e=520'}); var m123 = L.marker([54.9026699, 69.147860975], {title: '123'}).addTo(markers);
+						$(m123).click(function () {window.location.href = 'event.php?do=show&e=123'}); var m502 = L.marker([54.8718455, 69.1442267], {title: '502'}).addTo(markers);
+						$(m502).click(function () {window.location.href = 'event.php?do=show&e=502'}); var m499 = L.marker([54.8521793, 69.1073357], {title: '499'}).addTo(markers);
+						$(m499).click(function () {window.location.href = 'event.php?do=show&e=499'}); var m680 = L.marker([54.868848341033, 69.117347896099], {title: '680'}).addTo(markers);
+						$(m680).click(function () {window.location.href = 'event.php?do=show&e=680'}); var m126 = L.marker([54.870892779023904, 69.20718097739154], {title: '126'}).addTo(markers);
+						$(m126).click(function () {window.location.href = 'event.php?do=show&e=126'}); var m424 = L.marker([54.868984464706, 69.125440670588], {title: '424'}).addTo(markers);
+						$(m424).click(function () {window.location.href = 'event.php?do=show&e=424'}); var m521 = L.marker([54.872706675, 69.144680725], {title: '521'}).addTo(markers);
+						$(m521).click(function () {window.location.href = 'event.php?do=show&e=521'}); var m515 = L.marker([54.867316175, 69.14493785], {title: '515'}).addTo(markers);
+						$(m515).click(function () {window.location.href = 'event.php?do=show&e=515'}); var m540 = L.marker([54.90698361990911, 69.1495239733922], {title: '540'}).addTo(markers);
+						$(m540).click(function () {window.location.href = 'event.php?do=show&e=540'}); var m494 = L.marker([54.904047025, 69.1455283], {title: '494'}).addTo(markers);
+						$(m494).click(function () {window.location.href = 'event.php?do=show&e=494'}); var m129 = L.marker([54.866310725, 69.1468732], {title: '129'}).addTo(markers);
+						$(m129).click(function () {window.location.href = 'event.php?do=show&e=129'}); var m1196 = L.marker([54.868628575, 69.11400555], {title: '1196'}).addTo(markers);
+						$(m1196).click(function () {window.location.href = 'event.php?do=show&e=1196'}); var m258 = L.marker([54.90802705, 69.13407975], {title: '258'}).addTo(markers);
+						$(m258).click(function () {window.location.href = 'event.php?do=show&e=258'}); var m524 = L.marker([54.871064404633785, 69.20183211565018], {title: '524'}).addTo(markers);
+						$(m524).click(function () {window.location.href = 'event.php?do=show&e=524'}); var m529 = L.marker([54.959384100976784, 69.12896454334259], {title: '529'}).addTo(markers);
+						$(m529).click(function () {window.location.href = 'event.php?do=show&e=529'}); var m531 = L.marker([54.85958795819509, 69.17050927877426], {title: '531'}).addTo(markers);
+						$(m531).click(function () {window.location.href = 'event.php?do=show&e=531'}); var m527 = L.marker([54.86140655091116, 69.16102552466327], {title: '527'}).addTo(markers);
+						$(m527).click(function () {window.location.href = 'event.php?do=show&e=527'}); var m643 = L.marker([54.868628575, 69.11400555], {title: '643'}).addTo(markers);
+						$(m643).click(function () {window.location.href = 'event.php?do=show&e=643'}); var m533 = L.marker([54.872096457842, 69.203323423862], {title: '533'}).addTo(markers);
+						$(m533).click(function () {window.location.href = 'event.php?do=show&e=533'}); var m532 = L.marker([54.872096457842, 69.203323423862], {title: '532'}).addTo(markers);
+						$(m532).click(function () {window.location.href = 'event.php?do=show&e=532'}); var m679 = L.marker([54.873732233333, 69.127404466667], {title: '679'}).addTo(markers);
+						$(m679).click(function () {window.location.href = 'event.php?do=show&e=679'}); var m23 = L.marker([54.86572245, 69.1947593], {title: '23'}).addTo(markers);
+						$(m23).click(function () {window.location.href = 'event.php?do=show&e=23'}); var m541 = L.marker([54.86702545331435, 69.16337728500366], {title: '541'}).addTo(markers);
+						$(m541).click(function () {window.location.href = 'event.php?do=show&e=541'}); var m681 = L.marker([54.892820466667, 69.141049266667], {title: '681'}).addTo(markers);
+						$(m681).click(function () {window.location.href = 'event.php?do=show&e=681'}); var m378 = L.marker([54.868628575, 69.11400555], {title: '378'}).addTo(markers);
+						$(m378).click(function () {window.location.href = 'event.php?do=show&e=378'}); var m686 = L.marker([54.8777995, 69.127925675], {title: '686'}).addTo(markers);
+						$(m686).click(function () {window.location.href = 'event.php?do=show&e=686'}); var m124 = L.marker([54.865448383333, 69.119184666667], {title: '124'}).addTo(markers);
+						$(m124).click(function () {window.location.href = 'event.php?do=show&e=124'}); var m549 = L.marker([54.85231185, 69.187077825], {title: '549'}).addTo(markers);
+						$(m549).click(function () {window.location.href = 'event.php?do=show&e=549'}); var m545 = L.marker([54.87526406504649, 69.15286034345627], {title: '545'}).addTo(markers);
+						$(m545).click(function () {window.location.href = 'event.php?do=show&e=545'}); var m483 = L.marker([54.869116133211, 69.2066372931], {title: '483'}).addTo(markers);
+						$(m483).click(function () {window.location.href = 'event.php?do=show&e=483'}); var m641 = L.marker([54.8646177, 69.1323535], {title: '641'}).addTo(markers);
+						$(m641).click(function () {window.location.href = 'event.php?do=show&e=641'}); var m688 = L.marker([54.873732233333, 69.127404466667], {title: '688'}).addTo(markers);
+						$(m688).click(function () {window.location.href = 'event.php?do=show&e=688'}); var m35 = L.marker([54.868048175, 69.121602675], {title: '35'}).addTo(markers);
+						$(m35).click(function () {window.location.href = 'event.php?do=show&e=35'}); var m555 = L.marker([54.879128131537826, 69.1536220908165], {title: '555'}).addTo(markers);
+						$(m555).click(function () {window.location.href = 'event.php?do=show&e=555'}); var m567 = L.marker([54.8777995, 69.127925675], {title: '567'}).addTo(markers);
+						$(m567).click(function () {window.location.href = 'event.php?do=show&e=567'}); var m554 = L.marker([54.85231185, 69.187077825], {title: '554'}).addTo(markers);
+						$(m554).click(function () {window.location.href = 'event.php?do=show&e=554'}); var m559 = L.marker([54.8559536125, 69.1321198], {title: '559'}).addTo(markers);
+						$(m559).click(function () {window.location.href = 'event.php?do=show&e=559'}); var m560 = L.marker([54.8646177, 69.1323535], {title: '560'}).addTo(markers);
+						$(m560).click(function () {window.location.href = 'event.php?do=show&e=560'}); var m612 = L.marker([54.8646177, 69.1323535], {title: '612'}).addTo(markers);
+						$(m612).click(function () {window.location.href = 'event.php?do=show&e=612'}); var m564 = L.marker([54.870188056088, 69.205089658499], {title: '564'}).addTo(markers);
+						$(m564).click(function () {window.location.href = 'event.php?do=show&e=564'}); var m232 = L.marker([54.908472825, 69.151535025], {title: '232'}).addTo(markers);
+						$(m232).click(function () {window.location.href = 'event.php?do=show&e=232'}); var m550 = L.marker([54.85231185, 69.187077825], {title: '550'}).addTo(markers);
+						$(m550).click(function () {window.location.href = 'event.php?do=show&e=550'}); var m592 = L.marker([54.9596140752482, 69.13049340248108], {title: '592'}).addTo(markers);
+						$(m592).click(function () {window.location.href = 'event.php?do=show&e=592'}); var m2 = L.marker([54.867912058621, 69.137544941379], {title: '2'}).addTo(markers);
+						$(m2).click(function () {window.location.href = 'event.php?do=show&e=2'}); var m576 = L.marker([54.87460505, 69.139661675], {title: '576'}).addTo(markers);
+						$(m576).click(function () {window.location.href = 'event.php?do=show&e=576'}); var m634 = L.marker([54.92025746082809, 69.12990868091583], {title: '634'}).addTo(markers);
+						$(m634).click(function () {window.location.href = 'event.php?do=show&e=634'}); var m3 = L.marker([54.874242625, 69.12895805], {title: '3'}).addTo(markers);
+						$(m3).click(function () {window.location.href = 'event.php?do=show&e=3'}); var m579 = L.marker([54.85942505, 69.11346565], {title: '579'}).addTo(markers);
+						$(m579).click(function () {window.location.href = 'event.php?do=show&e=579'}); var m581 = L.marker([54.864923705042585, 69.13967513959506], {title: '581'}).addTo(markers);
+						$(m581).click(function () {window.location.href = 'event.php?do=show&e=581'}); var m7 = L.marker([54.8584635875, 69.145675325], {title: '7'}).addTo(markers);
+						$(m7).click(function () {window.location.href = 'event.php?do=show&e=7'}); var m558 = L.marker([54.92029815666443, 69.12984162569046], {title: '558'}).addTo(markers);
+						$(m558).click(function () {window.location.href = 'event.php?do=show&e=558'}); var m568 = L.marker([54.8777995, 69.127925675], {title: '568'}).addTo(markers);
+						$(m568).click(function () {window.location.href = 'event.php?do=show&e=568'}); var m556 = L.marker([54.9566243100548, 69.24602150917053], {title: '556'}).addTo(markers);
+						$(m556).click(function () {window.location.href = 'event.php?do=show&e=556'}); var m563 = L.marker([54.85877218934013, 69.14765310248185], {title: '563'}).addTo(markers);
+						$(m563).click(function () {window.location.href = 'event.php?do=show&e=563'}); var m73 = L.marker([54.910288825, 69.150572825], {title: '73'}).addTo(markers);
+						$(m73).click(function () {window.location.href = 'event.php?do=show&e=73'}); var m575 = L.marker([54.85231185, 69.187077825], {title: '575'}).addTo(markers);
+						$(m575).click(function () {window.location.href = 'event.php?do=show&e=575'}); var m570 = L.marker([54.860548981919, 69.133535698056], {title: '570'}).addTo(markers);
+						$(m570).click(function () {window.location.href = 'event.php?do=show&e=570'}); var m673 = L.marker([54.867889525, 69.1241899], {title: '673'}).addTo(markers);
+						$(m673).click(function () {window.location.href = 'event.php?do=show&e=673'}); var m571 = L.marker([54.89274365, 69.1466122], {title: '571'}).addTo(markers);
+						$(m571).click(function () {window.location.href = 'event.php?do=show&e=571'}); var m672 = L.marker([54.8670699074232, 69.12641376256943], {title: '672'}).addTo(markers);
+						$(m672).click(function () {window.location.href = 'event.php?do=show&e=672'}); var m17 = L.marker([54.874258216667, 69.1420419], {title: '17'}).addTo(markers);
+						$(m17).click(function () {window.location.href = 'event.php?do=show&e=17'}); var m574 = L.marker([54.853820948558, 69.106201976538], {title: '574'}).addTo(markers);
+						$(m574).click(function () {window.location.href = 'event.php?do=show&e=574'}); var m1149 = L.marker([54.861305075, 69.146980525], {title: '1149'}).addTo(markers);
+						$(m1149).click(function () {window.location.href = 'event.php?do=show&e=1149'}); var m552 = L.marker([54.85292731835942, 69.16734158992767], {title: '552'}).addTo(markers);
+						$(m552).click(function () {window.location.href = 'event.php?do=show&e=552'}); var m448 = L.marker([54.9039453, 69.1420092], {title: '448'}).addTo(markers);
+						$(m448).click(function () {window.location.href = 'event.php?do=show&e=448'}); var m572 = L.marker([54.858121175, 69.11320125], {title: '572'}).addTo(markers);
+						$(m572).click(function () {window.location.href = 'event.php?do=show&e=572'}); var m580 = L.marker([54.85942505, 69.11346565], {title: '580'}).addTo(markers);
+						$(m580).click(function () {window.location.href = 'event.php?do=show&e=580'}); var m583 = L.marker([54.90644934390096, 69.14365768432617], {title: '583'}).addTo(markers);
+						$(m583).click(function () {window.location.href = 'event.php?do=show&e=583'}); var m597 = L.marker([54.866926666188405, 69.1630420088768], {title: '597'}).addTo(markers);
+						$(m597).click(function () {window.location.href = 'event.php?do=show&e=597'}); var m585 = L.marker([54.867956510009634, 69.14560604069266], {title: '585'}).addTo(markers);
+						$(m585).click(function () {window.location.href = 'event.php?do=show&e=585'}); var m588 = L.marker([54.86321703449082, 69.13068008416303], {title: '588'}).addTo(markers);
+						$(m588).click(function () {window.location.href = 'event.php?do=show&e=588'}); var m591 = L.marker([54.877990379167, 69.147200129167], {title: '591'}).addTo(markers);
+						$(m591).click(function () {window.location.href = 'event.php?do=show&e=591'}); var m125 = L.marker([54.866310725, 69.1468732], {title: '125'}).addTo(markers);
+						$(m125).click(function () {window.location.href = 'event.php?do=show&e=125'}); var m117 = L.marker([54.84191335, 69.1536584], {title: '117'}).addTo(markers);
+						$(m117).click(function () {window.location.href = 'event.php?do=show&e=117'}); var m168 = L.marker([54.90882771193372, 69.14804309606552], {title: '168'}).addTo(markers);
+						$(m168).click(function () {window.location.href = 'event.php?do=show&e=168'}); var m657 = L.marker([54.89769702277557, 69.13668394088745], {title: '657'}).addTo(markers);
+						$(m657).click(function () {window.location.href = 'event.php?do=show&e=657'}); var m589 = L.marker([54.8766389, 69.1394153], {title: '589'}).addTo(markers);
+						$(m589).click(function () {window.location.href = 'event.php?do=show&e=589'}); var m638 = L.marker([54.872096457842, 69.203323423862], {title: '638'}).addTo(markers);
+						$(m638).click(function () {window.location.href = 'event.php?do=show&e=638'}); var m40 = L.marker([54.86350015, 69.16556775], {title: '40'}).addTo(markers);
+						$(m40).click(function () {window.location.href = 'event.php?do=show&e=40'}); var m697 = L.marker([54.885528900495, 69.150756799928], {title: '697'}).addTo(markers);
+						$(m697).click(function () {window.location.href = 'event.php?do=show&e=697'}); var m627 = L.marker([54.8646177, 69.1323535], {title: '627'}).addTo(markers);
+						$(m627).click(function () {window.location.href = 'event.php?do=show&e=627'}); var m5 = L.marker([54.8638325, 69.132041425], {title: '5'}).addTo(markers);
+						$(m5).click(function () {window.location.href = 'event.php?do=show&e=5'}); var m622 = L.marker([54.90946298873379, 69.15030419826508], {title: '622'}).addTo(markers);
+						$(m622).click(function () {window.location.href = 'event.php?do=show&e=622'}); var m36 = L.marker([54.84530498661234, 69.1116589307785], {title: '36'}).addTo(markers);
+						$(m36).click(function () {window.location.href = 'event.php?do=show&e=36'}); var m276 = L.marker([54.891589, 69.1428508], {title: '276'}).addTo(markers);
+						$(m276).click(function () {window.location.href = 'event.php?do=show&e=276'}); var m614 = L.marker([54.85291135, 69.16893025], {title: '614'}).addTo(markers);
+						$(m614).click(function () {window.location.href = 'event.php?do=show&e=614'}); var m626 = L.marker([54.902702925, 69.1507867], {title: '626'}).addTo(markers);
+						$(m626).click(function () {window.location.href = 'event.php?do=show&e=626'}); var m613 = L.marker([54.86030737734212, 69.16141927242279], {title: '613'}).addTo(markers);
+						$(m613).click(function () {window.location.href = 'event.php?do=show&e=613'}); var m651 = L.marker([54.883207837937, 69.137787669897], {title: '651'}).addTo(markers);
+						$(m651).click(function () {window.location.href = 'event.php?do=show&e=651'}); var m618 = L.marker([54.86178940208546, 69.14508193731308], {title: '618'}).addTo(markers);
+						$(m618).click(function () {window.location.href = 'event.php?do=show&e=618'}); var m645 = L.marker([54.86375475, 69.130008416667], {title: '645'}).addTo(markers);
+						$(m645).click(function () {window.location.href = 'event.php?do=show&e=645'}); var m600 = L.marker([54.880125625, 69.1280147], {title: '600'}).addTo(markers);
+						$(m600).click(function () {window.location.href = 'event.php?do=show&e=600'}); var m615 = L.marker([54.846793739930206, 69.09620618816916], {title: '615'}).addTo(markers);
+						$(m615).click(function () {window.location.href = 'event.php?do=show&e=615'}); var m650 = L.marker([54.8559536125, 69.1321198], {title: '650'}).addTo(markers);
+						$(m650).click(function () {window.location.href = 'event.php?do=show&e=650'}); var m701 = L.marker([54.861937857897, 69.127940386534], {title: '701'}).addTo(markers);
+						$(m701).click(function () {window.location.href = 'event.php?do=show&e=701'}); var m696 = L.marker([54.87941514405946, 69.14012521505356], {title: '696'}).addTo(markers);
+						$(m696).click(function () {window.location.href = 'event.php?do=show&e=696'}); var m648 = L.marker([54.95944056805947, 69.13041293621063], {title: '648'}).addTo(markers);
+						$(m648).click(function () {window.location.href = 'event.php?do=show&e=648'}); var m706 = L.marker([54.871763348829, 69.208305180073], {title: '706'}).addTo(markers);
+						$(m706).click(function () {window.location.href = 'event.php?do=show&e=706'}); var m708 = L.marker([54.89153261383433, 69.15181964635849], {title: '708'}).addTo(markers);
+						$(m708).click(function () {window.location.href = 'event.php?do=show&e=708'}); var m698 = L.marker([54.831560767402564, 69.12848979234695], {title: '698'}).addTo(markers);
+						$(m698).click(function () {window.location.href = 'event.php?do=show&e=698'}); var m1194 = L.marker([54.876148871429, 69.142595414286], {title: '1194'}).addTo(markers);
+						$(m1194).click(function () {window.location.href = 'event.php?do=show&e=1194'}); var m926 = L.marker([54.861937857897, 69.127940386534], {title: '926'}).addTo(markers);
+						$(m926).click(function () {window.location.href = 'event.php?do=show&e=926'}); var m699 = L.marker([54.873732233333, 69.127404466667], {title: '699'}).addTo(markers);
+						$(m699).click(function () {window.location.href = 'event.php?do=show&e=699'}); var m925 = L.marker([54.86688635, 69.136631125], {title: '925'}).addTo(markers);
+						$(m925).click(function () {window.location.href = 'event.php?do=show&e=925'}); var m1111 = L.marker([54.896588625, 69.146067575], {title: '1111'}).addTo(markers);
+						$(m1111).click(function () {window.location.href = 'event.php?do=show&e=1111'}); var m924 = L.marker([54.86984745, 69.14559635], {title: '924'}).addTo(markers);
+						$(m924).click(function () {window.location.href = 'event.php?do=show&e=924'}); var m702 = L.marker([54.86790915, 69.1324326], {title: '702'}).addTo(markers);
+						$(m702).click(function () {window.location.href = 'event.php?do=show&e=702'}); var m720 = L.marker([54.8600494, 69.146633825], {title: '720'}).addTo(markers);
+						$(m720).click(function () {window.location.href = 'event.php?do=show&e=720'}); var m1119 = L.marker([54.88081935, 69.107773875], {title: '1119'}).addTo(markers);
+						$(m1119).click(function () {window.location.href = 'event.php?do=show&e=1119'}); var m704 = L.marker([54.8795540203522, 69.15048390626907], {title: '704'}).addTo(markers);
+						$(m704).click(function () {window.location.href = 'event.php?do=show&e=704'}); var m693 = L.marker([54.886111575, 69.1456389], {title: '693'}).addTo(markers);
+						$(m693).click(function () {window.location.href = 'event.php?do=show&e=693'}); var m722 = L.marker([54.8600494, 69.146633825], {title: '722'}).addTo(markers);
+						$(m722).click(function () {window.location.href = 'event.php?do=show&e=722'}); var m694 = L.marker([54.8480542, 69.168627225], {title: '694'}).addTo(markers);
+						$(m694).click(function () {window.location.href = 'event.php?do=show&e=694'}); var m1070 = L.marker([54.86451248056428, 69.15531188249588], {title: '1070'}).addTo(markers);
+						$(m1070).click(function () {window.location.href = 'event.php?do=show&e=1070'}); var m705 = L.marker([54.58205107627358, 67.30044364929199], {title: '705'}).addTo(markers);
+						$(m705).click(function () {window.location.href = 'event.php?do=show&e=705'}); var m721 = L.marker([54.8600494, 69.146633825], {title: '721'}).addTo(markers);
+						$(m721).click(function () {window.location.href = 'event.php?do=show&e=721'}); var m707 = L.marker([54.871763348829, 69.208305180073], {title: '707'}).addTo(markers);
+						$(m707).click(function () {window.location.href = 'event.php?do=show&e=707'}); var m723 = L.marker([54.8600494, 69.146633825], {title: '723'}).addTo(markers);
+						$(m723).click(function () {window.location.href = 'event.php?do=show&e=723'}); var m718 = L.marker([54.87954476194757, 69.15050536394119], {title: '718'}).addTo(markers);
+						$(m718).click(function () {window.location.href = 'event.php?do=show&e=718'}); var m724 = L.marker([54.861364945724, 69.15343184941], {title: '724'}).addTo(markers);
+						$(m724).click(function () {window.location.href = 'event.php?do=show&e=724'}); var m727 = L.marker([54.86563500216872, 69.12422776222229], {title: '727'}).addTo(markers);
+						$(m727).click(function () {window.location.href = 'event.php?do=show&e=727'}); var m725 = L.marker([54.86655312518035, 69.12695556879044], {title: '725'}).addTo(markers);
+						$(m725).click(function () {window.location.href = 'event.php?do=show&e=725'}); var m735 = L.marker([54.86546065, 69.14874105], {title: '735'}).addTo(markers);
+						$(m735).click(function () {window.location.href = 'event.php?do=show&e=735'}); var m726 = L.marker([54.871943922729, 69.20931994915], {title: '726'}).addTo(markers);
+						$(m726).click(function () {window.location.href = 'event.php?do=show&e=726'}); var m736 = L.marker([54.86575169823034, 69.1243377327919], {title: '736'}).addTo(markers);
+						$(m736).click(function () {window.location.href = 'event.php?do=show&e=736'}); var m732 = L.marker([54.8624465, 69.14918075], {title: '732'}).addTo(markers);
+						$(m732).click(function () {window.location.href = 'event.php?do=show&e=732'}); var m734 = L.marker([54.859760866972834, 69.14678782224655], {title: '734'}).addTo(markers);
+						$(m734).click(function () {window.location.href = 'event.php?do=show&e=734'}); var m700 = L.marker([54.8663641125, 69.13275395], {title: '700'}).addTo(markers);
+						$(m700).click(function () {window.location.href = 'event.php?do=show&e=700'}); var m730 = L.marker([54.8600494, 69.146633825], {title: '730'}).addTo(markers);
+						$(m730).click(function () {window.location.href = 'event.php?do=show&e=730'}); var m939 = L.marker([54.776632988576615, 69.10547375679016], {title: '939'}).addTo(markers);
+						$(m939).click(function () {window.location.href = 'event.php?do=show&e=939'}); var m729 = L.marker([54.868601166667, 69.138125766667], {title: '729'}).addTo(markers);
+						$(m729).click(function () {window.location.href = 'event.php?do=show&e=729'}); var m737 = L.marker([54.84496006371772, 69.10985214115499], {title: '737'}).addTo(markers);
+						$(m737).click(function () {window.location.href = 'event.php?do=show&e=737'}); var m286 = L.marker([54.917585013217, 69.142193198204], {title: '286'}).addTo(markers);
+						$(m286).click(function () {window.location.href = 'event.php?do=show&e=286'}); var m1081 = L.marker([54.85760254178157, 69.1350907087326], {title: '1081'}).addTo(markers);
+						$(m1081).click(function () {window.location.href = 'event.php?do=show&e=1081'}); var m741 = L.marker([54.86441059998707, 69.14075285196304], {title: '741'}).addTo(markers);
+						$(m741).click(function () {window.location.href = 'event.php?do=show&e=741'}); var m742 = L.marker([54.886111575, 69.1456389], {title: '742'}).addTo(markers);
+						$(m742).click(function () {window.location.href = 'event.php?do=show&e=742'}); var m962 = L.marker([54.901568, 69.14105505], {title: '962'}).addTo(markers);
+						$(m962).click(function () {window.location.href = 'event.php?do=show&e=962'}); var m968 = L.marker([54.86688635, 69.136631125], {title: '968'}).addTo(markers);
+						$(m968).click(function () {window.location.href = 'event.php?do=show&e=968'}); var m787 = L.marker([54.86722635, 69.14987165], {title: '787'}).addTo(markers);
+						$(m787).click(function () {window.location.href = 'event.php?do=show&e=787'}); var m760 = L.marker([54.853820948558, 69.106201976538], {title: '760'}).addTo(markers);
+						$(m760).click(function () {window.location.href = 'event.php?do=show&e=760'}); var m749 = L.marker([54.8449528667994, 69.10963654518127], {title: '749'}).addTo(markers);
+						$(m749).click(function () {window.location.href = 'event.php?do=show&e=749'}); var m26 = L.marker([54.85485305718549, 69.12120223045348], {title: '26'}).addTo(markers);
+						$(m26).click(function () {window.location.href = 'event.php?do=show&e=26'}); var m750 = L.marker([54.9154464, 69.15269955], {title: '750'}).addTo(markers);
+						$(m750).click(function () {window.location.href = 'event.php?do=show&e=750'}); var m48 = L.marker([54.8747455359197, 69.15959537029265], {title: '48'}).addTo(markers);
+						$(m48).click(function () {window.location.href = 'event.php?do=show&e=48'}); var m216 = L.marker([54.87382883417819, 69.1557115316391], {title: '216'}).addTo(markers);
+						$(m216).click(function () {window.location.href = 'event.php?do=show&e=216'}); var m785 = L.marker([54.923554565781, 69.13885806288], {title: '785'}).addTo(markers);
+						$(m785).click(function () {window.location.href = 'event.php?do=show&e=785'}); var m973 = L.marker([54.9062424, 69.153515525], {title: '973'}).addTo(markers);
+						$(m973).click(function () {window.location.href = 'event.php?do=show&e=973'}); var m101 = L.marker([54.8646177, 69.1323535], {title: '101'}).addTo(markers);
+						$(m101).click(function () {window.location.href = 'event.php?do=show&e=101'}); var m792 = L.marker([54.84394295, 69.18181295], {title: '792'}).addTo(markers);
+						$(m792).click(function () {window.location.href = 'event.php?do=show&e=792'}); var m1082 = L.marker([54.89788457498233, 69.13626283407211], {title: '1082'}).addTo(markers);
+						$(m1082).click(function () {window.location.href = 'event.php?do=show&e=1082'}); var m566 = L.marker([54.8697645, 69.13982335], {title: '566'}).addTo(markers);
+						$(m566).click(function () {window.location.href = 'event.php?do=show&e=566'}); var m206 = L.marker([54.97330337073262, 69.12238508462906], {title: '206'}).addTo(markers);
+						$(m206).click(function () {window.location.href = 'event.php?do=show&e=206'}); var m974 = L.marker([54.896588625, 69.146067575], {title: '974'}).addTo(markers);
+						$(m974).click(function () {window.location.href = 'event.php?do=show&e=974'}); var m210 = L.marker([54.90882771193372, 69.14813697338104], {title: '210'}).addTo(markers);
+						$(m210).click(function () {window.location.href = 'event.php?do=show&e=210'}); var m978 = L.marker([54.90538594100765, 69.1550999879837], {title: '978'}).addTo(markers);
+						$(m978).click(function () {window.location.href = 'event.php?do=show&e=978'}); var m756 = L.marker([54.87412020559263, 69.1919293999672], {title: '756'}).addTo(markers);
+						$(m756).click(function () {window.location.href = 'event.php?do=show&e=756'}); var m353 = L.marker([54.8521793, 69.1073357], {title: '353'}).addTo(markers);
+						$(m353).click(function () {window.location.href = 'event.php?do=show&e=353'}); var m11 = L.marker([54.85231185, 69.187077825], {title: '11'}).addTo(markers);
+						$(m11).click(function () {window.location.href = 'event.php?do=show&e=11'}); var m369 = L.marker([54.910419025, 69.141799375], {title: '369'}).addTo(markers);
+						$(m369).click(function () {window.location.href = 'event.php?do=show&e=369'}); var m798 = L.marker([54.852971788058696, 69.16813230494881], {title: '798'}).addTo(markers);
+						$(m798).click(function () {window.location.href = 'event.php?do=show&e=798'}); var m800 = L.marker([54.880014116667, 69.1243457], {title: '800'}).addTo(markers);
+						$(m800).click(function () {window.location.href = 'event.php?do=show&e=800'}); var m820 = L.marker([54.8642391, 69.120749675], {title: '820'}).addTo(markers);
+						$(m820).click(function () {window.location.href = 'event.php?do=show&e=820'}); var m728 = L.marker([54.8632468585409, 69.13575616472371], {title: '728'}).addTo(markers);
+						$(m728).click(function () {window.location.href = 'event.php?do=show&e=728'}); var m823 = L.marker([54.866105175, 69.154731325], {title: '823'}).addTo(markers);
+						$(m823).click(function () {window.location.href = 'event.php?do=show&e=823'}); var m813 = L.marker([54.870947025, 69.1527121], {title: '813'}).addTo(markers);
+						$(m813).click(function () {window.location.href = 'event.php?do=show&e=813'}); var m982 = L.marker([54.89662825, 69.1415463], {title: '982'}).addTo(markers);
+						$(m982).click(function () {window.location.href = 'event.php?do=show&e=982'}); var m811 = L.marker([54.860791356856, 69.174062793071], {title: '811'}).addTo(markers);
+						$(m811).click(function () {window.location.href = 'event.php?do=show&e=811'}); var m824 = L.marker([54.8794626706951, 69.14153015593911], {title: '824'}).addTo(markers);
+						$(m824).click(function () {window.location.href = 'event.php?do=show&e=824'}); var m1048 = L.marker([54.871718, 69.11680795], {title: '1048'}).addTo(markers);
+						$(m1048).click(function () {window.location.href = 'event.php?do=show&e=1048'}); var m822 = L.marker([54.85463665, 69.12107745], {title: '822'}).addTo(markers);
+						$(m822).click(function () {window.location.href = 'event.php?do=show&e=822'}); var m819 = L.marker([54.8642391, 69.120749675], {title: '819'}).addTo(markers);
+						$(m819).click(function () {window.location.href = 'event.php?do=show&e=819'}); var m1063 = L.marker([54.85185995, 69.10696195], {title: '1063'}).addTo(markers);
+						$(m1063).click(function () {window.location.href = 'event.php?do=show&e=1063'}); var m816 = L.marker([54.87940403391652, 69.14019441584969], {title: '816'}).addTo(markers);
+						$(m816).click(function () {window.location.href = 'event.php?do=show&e=816'}); var m814 = L.marker([54.9058739, 69.148678575], {title: '814'}).addTo(markers);
+						$(m814).click(function () {window.location.href = 'event.php?do=show&e=814'}); var m994 = L.marker([54.866739587480765, 69.12616163492203], {title: '994'}).addTo(markers);
+						$(m994).click(function () {window.location.href = 'event.php?do=show&e=994'}); var m1068 = L.marker([54.8745763, 69.13566562], {title: '1068'}).addTo(markers);
+						$(m1068).click(function () {window.location.href = 'event.php?do=show&e=1068'}); var m812 = L.marker([54.86077669107037, 69.16611313819885], {title: '812'}).addTo(markers);
+						$(m812).click(function () {window.location.href = 'event.php?do=show&e=812'}); var m832 = L.marker([54.87460505, 69.139661675], {title: '832'}).addTo(markers);
+						$(m832).click(function () {window.location.href = 'event.php?do=show&e=832'}); var m802 = L.marker([54.85402285, 69.19621045], {title: '802'}).addTo(markers);
+						$(m802).click(function () {window.location.href = 'event.php?do=show&e=802'}); var m794 = L.marker([54.868601166667, 69.138125766667], {title: '794'}).addTo(markers);
+						$(m794).click(function () {window.location.href = 'event.php?do=show&e=794'}); var m795 = L.marker([54.872706675, 69.144680725], {title: '795'}).addTo(markers);
+						$(m795).click(function () {window.location.href = 'event.php?do=show&e=795'}); var m784 = L.marker([54.87003522, 69.13365648], {title: '784'}).addTo(markers);
+						$(m784).click(function () {window.location.href = 'event.php?do=show&e=784'}); var m1228 = L.marker([54.871048075, 69.14271545], {title: '1228'}).addTo(markers);
+						$(m1228).click(function () {window.location.href = 'event.php?do=show&e=1228'}); var m1087 = L.marker([54.861041475, 69.1513421], {title: '1087'}).addTo(markers);
+						$(m1087).click(function () {window.location.href = 'event.php?do=show&e=1087'}); var m828 = L.marker([54.8642391, 69.120749675], {title: '828'}).addTo(markers);
+						$(m828).click(function () {window.location.href = 'event.php?do=show&e=828'}); var m1229 = L.marker([54.86364935, 69.120655175], {title: '1229'}).addTo(markers);
+						$(m1229).click(function () {window.location.href = 'event.php?do=show&e=1229'}); var m1230 = L.marker([54.8777995, 69.127925675], {title: '1230'}).addTo(markers);
+						$(m1230).click(function () {window.location.href = 'event.php?do=show&e=1230'}); var m1231 = L.marker([54.8777995, 69.127925675], {title: '1231'}).addTo(markers);
+						$(m1231).click(function () {window.location.href = 'event.php?do=show&e=1231'}); var m848 = L.marker([54.8753069, 69.134912183333], {title: '848'}).addTo(markers);
+						$(m848).click(function () {window.location.href = 'event.php?do=show&e=848'}); var m1232 = L.marker([54.8777995, 69.127925675], {title: '1232'}).addTo(markers);
+						$(m1232).click(function () {window.location.href = 'event.php?do=show&e=1232'}); var m1020 = L.marker([54.90422372, 69.1411976], {title: '1020'}).addTo(markers);
+						$(m1020).click(function () {window.location.href = 'event.php?do=show&e=1020'}); var m849 = L.marker([54.8753069, 69.134912183333], {title: '849'}).addTo(markers);
+						$(m849).click(function () {window.location.href = 'event.php?do=show&e=849'}); var m1012 = L.marker([54.8531556, 69.18846875], {title: '1012'}).addTo(markers);
+						$(m1012).click(function () {window.location.href = 'event.php?do=show&e=1012'}); var m865 = L.marker([54.862092991667, 69.1311371], {title: '865'}).addTo(markers);
+						$(m865).click(function () {window.location.href = 'event.php?do=show&e=865'}); var m868 = L.marker([54.863975019566, 69.164747223443], {title: '868'}).addTo(markers);
+						$(m868).click(function () {window.location.href = 'event.php?do=show&e=868'}); var m869 = L.marker([54.97458542543881, 69.12098443488503], {title: '869'}).addTo(markers);
+						$(m869).click(function () {window.location.href = 'event.php?do=show&e=869'}); var m870 = L.marker([54.8729738444035, 69.12825912237167], {title: '870'}).addTo(markers);
+						$(m870).click(function () {window.location.href = 'event.php?do=show&e=870'}); var m617 = L.marker([54.8600494, 69.146633825], {title: '617'}).addTo(markers);
+						$(m617).click(function () {window.location.href = 'event.php?do=show&e=617'}); var m1105 = L.marker([54.97161305, 69.123609625], {title: '1105'}).addTo(markers);
+						$(m1105).click(function () {window.location.href = 'event.php?do=show&e=1105'}); var m877 = L.marker([54.8818231, 69.108876725], {title: '877'}).addTo(markers);
+						$(m877).click(function () {window.location.href = 'event.php?do=show&e=877'}); var m1104 = L.marker([54.94696354904587, 69.1653299331665], {title: '1104'}).addTo(markers);
+						$(m1104).click(function () {window.location.href = 'event.php?do=show&e=1104'}); var m1033 = L.marker([54.89662825, 69.1415463], {title: '1033'}).addTo(markers);
+						$(m1033).click(function () {window.location.href = 'event.php?do=show&e=1033'}); var m1102 = L.marker([54.94622410942952, 69.16616678237915], {title: '1102'}).addTo(markers);
+						$(m1102).click(function () {window.location.href = 'event.php?do=show&e=1102'}); var m1044 = L.marker([54.86573811460458, 69.14208859205246], {title: '1044'}).addTo(markers);
+						$(m1044).click(function () {window.location.href = 'event.php?do=show&e=1044'}); var m1034 = L.marker([54.86800096318613, 69.14826035499573], {title: '1034'}).addTo(markers);
+						$(m1034).click(function () {window.location.href = 'event.php?do=show&e=1034'}); var m1096 = L.marker([54.861041475, 69.1513421], {title: '1096'}).addTo(markers);
+						$(m1096).click(function () {window.location.href = 'event.php?do=show&e=1096'}); var m882 = L.marker([54.8818231, 69.108876725], {title: '882'}).addTo(markers);
+						$(m882).click(function () {window.location.href = 'event.php?do=show&e=882'}); var m1103 = L.marker([54.867316175, 69.14493785], {title: '1103'}).addTo(markers);
+						$(m1103).click(function () {window.location.href = 'event.php?do=show&e=1103'}); var m596 = L.marker([54.851157975, 69.115524025], {title: '596'}).addTo(markers);
+						$(m596).click(function () {window.location.href = 'event.php?do=show&e=596'}); var m1039 = L.marker([54.901136628754, 69.139410432789], {title: '1039'}).addTo(markers);
+						$(m1039).click(function () {window.location.href = 'event.php?do=show&e=1039'}); var m1056 = L.marker([54.86736605, 69.12805742], {title: '1056'}).addTo(markers);
+						$(m1056).click(function () {window.location.href = 'event.php?do=show&e=1056'}); var m623 = L.marker([54.90879070520914, 69.14799749851227], {title: '623'}).addTo(markers);
+						$(m623).click(function () {window.location.href = 'event.php?do=show&e=623'}); var m619 = L.marker([54.866211033828, 69.141917025477], {title: '619'}).addTo(markers);
+						$(m619).click(function () {window.location.href = 'event.php?do=show&e=619'}); var m628 = L.marker([54.86295522329341, 69.12918019293102], {title: '628'}).addTo(markers);
+						$(m628).click(function () {window.location.href = 'event.php?do=show&e=628'}); var m1112 = L.marker([54.8749448, 69.13685145], {title: '1112'}).addTo(markers);
+						$(m1112).click(function () {window.location.href = 'event.php?do=show&e=1112'});</script>
+					<div class="col-md-4">
+						<div id="filter_block">
+							<p>Выберите события по следующим критериям:</p>
+							<div class="row">
+								<form class="form-horizontal">
+									<div class="col-md-12">
+										<label class="control-label">Статусы</label>
+										<select class="form-control filter" name="status_list" id="status_list">
+											<option value="-1" selected="">Все статусы</option>
+											<option value="2">В работе</option>
+											<option value="3">Завершено</option>
+											<option value="4">Запланировано</option>
+											<option value="5">Мотивированный отказ</option>
+											<option value="6">Дано разъяснение</option>
+										</select>
+									</div>
+									<div class="col-md-12">
+										<label class="control-label">Категории</label>
+										<select class="form-control filter" name="cat_list" id="cat_list">
+											<option value="0">Все категории</option>
+											<option value="5">Автомобили вне дорог, препятствующие проходу и/или проезду
+											</option>
+											<option value="6">Автомобили на дорогах, препятствующие проходу и/или
+												проезду </option>
+											<option value="7">Благоустройство территории</option>
+											<option value="8">Генеральный план, застройка</option>
+											<option value="30">Детские сады</option>
+											<option value="31">Жилищно-коммунальные услуги</option>
+											<option value="32">Капитальный ремонт</option>
+											<option value="58">Колледжи</option>
+											<option value="33">Культура</option>
+											<option value="34">Мобильная связь</option>
+											<option value="35">Молодежная политика</option>
+											<option value="36">Нарушение в наружной рекламе</option>
+											<option value="38">Общественный транспорт</option>
+											<option value="39">Организация дорожного движения</option>
+											<option value="40">Ошибки в названиях и надписях</option>
+											<option value="41">Подвесные линии связи</option>
+											<option value="42">Поликлиники и больницы</option>
+											<option value="44">Правопорядок</option>
+											<option value="45">Проблемы, препятствующие развитию предпринимательства
+											</option>
+											<option value="59">Промышленность</option>
+											<option value="999">Прочие вопросы</option>
+											<option value="46">Религиозная деятельность</option>
+											<option value="43">Ремонт дорог</option>
+											<option value="47">Сельское хозяйство</option>
+											<option value="48">СМИ</option>
+											<option value="49">Снос и землепользование</option>
+											<option value="50">Социальное обслуживание</option>
+											<option value="51">Спорт</option>
+											<option value="52">Стационарная связь</option>
+											<option value="37">Торговля и услуги</option>
+											<option value="53">Трудовые отношения</option>
+											<option value="54">Туризм</option>
+											<option value="62">Чрезвычайные ситуации природного и техногенного характера
+											</option>
+											<option value="55">Школы</option>
+											<option value="56">Экология</option>
+										</select>
+									</div>
+									<div class="col-md-12">
+										<label class="control-label">Город/район</label>
+										<select class="form-control filter" name="region_list" id="region_list">
+											<option value="0">Все районы</option>
+											<option value="7790">АЙЫРТАУСКИЙ РАЙОН</option>
+											<option value="7892">АКЖАРСКИЙ РАЙОН</option>
+											<option value="7930">АККАЙЫНСКИЙ РАЙОН</option>
+											<option value="7975">ЕСИЛЬСКИЙ РАЙОН</option>
+											<option value="8050">ЖАМБЫЛСКИЙ РАЙОН</option>
+											<option value="8127">ИМЕНИ ГАБИТА МУСРЕПОВА РАЙОН</option>
+											<option value="8214">КЫЗЫЛЖАРСКИЙ РАЙОН</option>
+											<option value="8307">МАГЖАНА ЖУМАБАЕВА РАЙОН</option>
+											<option value="8401">МАМЛЮТСКИЙ РАЙОН</option>
+											<option value="7789">ПЕТРОПАВЛОВСК ГОРОД ОБЛАСТНОГО ЗНАЧЕНИЯ</option>
+											<option value="8456">ТАЙЫНШИНСКИЙ РАЙОН</option>
+											<option value="8565">ТИМИРЯЗЕВСКИЙ РАЙОН</option>
+											<option value="8607">УАЛИХАНОВСКИЙ РАЙОН</option>
+											<option value="8646">ШАЛ АКЫНА РАЙОН</option>
+										</select>
+									</div>
+									<div class="col-md-12">
+										<label class="control-label">Сортировать по...</label>
+										<select class="form-control filter" name="order_list" id="order_list">
+											<option value="1" selected="">По дате добавления</option>
+											<option value="2">По популярности</option>
+										</select>
+									</div>
+									<div class="sub_btn">
+										<button type="button" class="btn btn-success" onclick="set_url()"
+											style="margin-right:10px">Фильтр</button><button type="button"
+											class="btn btn-success"
+											onclick="location.href=&#39;event.php?do=add&#39;">Создать событие</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<h3 class="ev_title">Сообщения <span>Всего сообщений: 1158</span></h3>
+				<hr>
+				<table id="event_table">
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th>Присоединились</th>
+							<th>Рейтинг</th>
+						</tr>
+					</thead>
+					<tbody id="etb">
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1232"><img
+										alt="Description" src="./Народный%20контроль_files/no_photo.png" width="80"></a></td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1232">1232: Стаи бродячих
+									собак</a><br>
+								СКО, ПЕТРОПАВЛОВСК, УЛ. ИНТЕРНАЦИОНАЛЬНАЯ 12
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-cog" style="padding-left:7px;"></span><br>В работе
+							</td>
+							<td class="center">
+								YURIY<br>
+								14.11.2022 07:44
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1231"><img
+										alt="Description" src="./Народный%20контроль_files/no_photo.png" width="80"></a></td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1231">1231: Установка заборов</a><br>
+								СКО, ПЕТРОПАВЛОВСК, УЛ. ИНТЕРНАЦИОНАЛЬНАЯ 12
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-cog" style="padding-left:7px;"></span><br>В работе
+							</td>
+							<td class="center">
+								aragok<br>
+								14.11.2022 07:32
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1230"><img
+										alt="Description" src="./Народный%20контроль_files/no_photo.png" width="80"></a></td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1230">1230: Бродячие собаки</a><br>
+								СКО, ПЕТРОПАВЛОВСК, УЛ. ИНТЕРНАЦИОНАЛЬНАЯ 12
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-cog" style="padding-left:7px;"></span><br>В работе
+							</td>
+							<td class="center">
+								aragok<br>
+								14.11.2022 07:27
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1229"><img
+										alt="Description" src="./Народный%20контроль_files/no_photo.png" width="80"></a></td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1229">1229: Озеленение города
+									Петропавловска</a><br>
+								СКО, ПЕТРОПАВЛОВСК, УЛ. МИРА 65
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-cog" style="padding-left:7px;"></span><br>В работе
+							</td>
+							<td class="center">
+								Марат<br>
+								12.11.2022 05:02
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1228"><img
+										alt="Description" src="./Народный%20контроль_files/no_photo.png" width="80"></a></td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1228">1228: Отсутствует детская
+									площадка.</a><br>
+								СКО, ПЕТРОПАВЛОВСК, УЛ. АБАЯ 57
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-cog" style="padding-left:7px;"></span><br>В работе
+							</td>
+							<td class="center">
+								Кристина С.<br>
+								11.11.2022 05:46
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1227"><img
+										alt="Description" src="./Народный%20контроль_files/16672309743836.jpeg" width="80"></a>
+							</td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1227">1227: На что сдаём деньги
+									ежемесячно в КСК???</a><br>
+								СКО, ПЕТРОПАВЛОВСК, УЛ. ИМЕНИ АБУ ДОСМУХАМБЕТОВА 17
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-ok" style="padding-left:7px;"></span><br>Дано
+								разъяснение
+							</td>
+							<td class="center">
+								Псевдоним<br>
+								31.10.2022 09:42
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1226"><img
+										alt="Description" src="./Народный%20контроль_files/16655445638692.jpeg" width="80"></a>
+							</td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1226">1226: Мусорные
+									контейнеры</a><br>
+								СКО, ПЕТРОПАВЛОВСК, УЛ. ИМЕНИ РАДИЩЕВА 33
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-ok" style="padding-left:7px;"></span><br>Дано
+								разъяснение
+							</td>
+							<td class="center">
+								Azamat<br>
+								12.10.2022 09:16
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1225"><img
+										alt="Description" src="./Народный%20контроль_files/no_photo.png" width="80"></a></td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1225">1225: К событию №1137</a><br>
+								СКО, ПЕТРОПАВЛОВСК, Адрес не указан
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-ok" style="padding-left:7px;"></span><br>Дано
+								разъяснение
+							</td>
+							<td class="center">
+								NoName<br>
+								05.10.2022 02:56
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1224"><img
+										alt="Description" src="./Народный%20контроль_files/no_photo.png" width="80"></a></td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1224">1224: К событию №1143</a><br>
+								СКО, ПЕТРОПАВЛОВСК, Адрес не указан
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-ok" style="padding-left:7px;"></span><br>Дано
+								разъяснение
+							</td>
+							<td class="center">
+								NoName<br>
+								05.10.2022 02:49
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="center"><a href="http://nk.sko.kz/event.php?do=show&amp;e=1223"><img
+										alt="Description" src="./Народный%20контроль_files/no_photo.png" width="80"></a></td>
+							<td class="left">
+								<a href="http://nk.sko.kz/event.php?do=show&amp;e=1223">1223: Свалка возле мусорных
+									баков</a><br>
+								СКО, ПЕТРОПАВЛОВСК, УЛ. НОВАЯ 122
+							</td>
+							<td class="center">
+								<span class="glyphicon glyphicon-ok" style="padding-left:7px;"></span><br>Дано
+								разъяснение
+							</td>
+							<td class="center">
+								NoName<br>
+								05.10.2022 02:45
+							</td>
+							<td class="center">
+								<div class="vote_count">
+									<span class="glyphicon glyphicon-star"></span> 0
+								</div>
+							</td>
+							<td class="center">
+								<div class="rating_count_zero">
+									<span class="glyphicon glyphicon-adjust"></span> 0
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="paginator" id="paginator">
+					<table>
+						<tbody>
+							<tr>
+								<td><span><strong>1</strong></span></td>
+								<td><span><a
+											href="http://nk.sko.kz/index.php?c=0&amp;d=0&amp;s=0&amp;ord=0&amp;pg=2">2</a></span>
+								</td>
+								<td><span><a
+											href="http://nk.sko.kz/index.php?c=0&amp;d=0&amp;s=0&amp;ord=0&amp;pg=3">3</a></span>
+								</td>
+								<td><span><a
+											href="http://nk.sko.kz/index.php?c=0&amp;d=0&amp;s=0&amp;ord=0&amp;pg=4">4</a></span>
+								</td>
+								<td><span><a
+											href="http://nk.sko.kz/index.php?c=0&amp;d=0&amp;s=0&amp;ord=0&amp;pg=5">5</a></span>
+								</td>
+								<td><span><a
+											href="http://nk.sko.kz/index.php?c=0&amp;d=0&amp;s=0&amp;ord=0&amp;pg=6">6</a></span>
+								</td>
+								<td><span><a
+											href="http://nk.sko.kz/index.php?c=0&amp;d=0&amp;s=0&amp;ord=0&amp;pg=7">7</a></span>
+								</td>
+								<td><span><a
+											href="http://nk.sko.kz/index.php?c=0&amp;d=0&amp;s=0&amp;ord=0&amp;pg=8">8</a></span>
+								</td>
+								<td><span><a
+											href="http://nk.sko.kz/index.php?c=0&amp;d=0&amp;s=0&amp;ord=0&amp;pg=9">9</a></span>
+								</td>
+								<td><span><a
+											href="http://nk.sko.kz/index.php?c=0&amp;d=0&amp;s=0&amp;ord=0&amp;pg=10">10</a></span>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="10">
+									<div class="scroll_bar">
+										<div class="scroll_trough"></div>
+										<div class="scroll_thumb" style="width: 8.62069%; left: 0px;">
+											<div class="scroll_knob"></div>
+										</div>
+										<div class="current_page_mark" style="width: 0.862069%; left: 0px;"></div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<script>
+					paginator = new Paginator(
+						"paginator", // id контейнера, куда ляжет пагинатор
+						116, // общее число страниц
+						10, // число страниц, видимых одновременно
+						1, // номер текущей страницы
+						"/index.php?c=0&d=0&s=0&ord=0&pg=" // url страниц
+					);
+				</script>
+				<p class="star-text">* - Сообщения публикуются с сохранением грамматики автора</p>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="mod_autorization" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="auth_form" method="post" action="http://nk.sko.kz/index.php">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title" id="myModalLabel">Авторизация на сайте</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="myiin">ИИН</label>
+							<input type="text" class="form-control" id="myiin" name="myiin"
+								placeholder="Введите Ваш ИИН">
+						</div>
+						<div class="form-group">
+							<label for="mypassword">Пароль</label>
+							<input type="password" class="form-control" id="mypassword" name="mypassword"
+								placeholder="Введите Ваш пароль">
+						</div>
+						<a href="http://nk.sko.kz/change_pass.php">Забыли пароль?</a>
+						<div class="form-group" style="color: red; text-align: center; margin-top: 20px;"
+							id="error_auth">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+						<button type="submit" class="btn btn-primary">Войти</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function () {
+			$('#auth_form').on('submit', function (e) {
+				e.preventDefault();
+				var login = $('#myiin').val();
+				var password = $('#mypassword').val();
+
+				$.post(
+					"/core/provider.php",
+					{
+						myiin: login,
+						mypassword: password,
+					},
+					function (data) {
+						data = JSON.parse(data);
+						if (data.error) {
+							$('#error_auth').text(data.message);
+						} else {
+							location.reload();
+						}
+					}
+				);
+
+			})
+		})
+	</script>
+	<footer>
+		<div id="footer_content">
+			<div id="footleft">
+				<div style="text-align: center;">Разработка и сопровождение интернет-ресурса: <a
+						href="http://integro.kz/" target="_blank">"Компания Интегро"</a><br>
+					Copyright © 2014 <a href="http://integro.kz/" target="_blank">"Компания Интегро"</a></div>
+			</div>
+			<div id="footright">
+				<div class="counter">
+					<!-- HotLog -->
+					<span id="hotlog_counter"></span>
+					<span id="hotlog_dyn">
+						<script async="" src="./Народный%20контроль_files/2370791.js.Без%20названия"></script>
+					</span>
+					<script> var hot_s = document.createElement('script');
+						hot_s.type = 'text/javascript'; hot_s.async = true;
+						hot_s.src = 'http://js.hotlog.ru/dcounter/2370791.js';
+						hot_d = document.getElementById('hotlog_dyn');
+						hot_d.appendChild(hot_s);
+					</script>
+					<noscript>
+						<a href="http://click.hotlog.ru/?2370791" target="_blank">
+							<img src="http://hit37.hotlog.ru/cgi-bin/hotlog/count?s=2370791&im=303" title="HotLog"
+								alt="HotLog" width="80"></a>
+					</noscript>
+					<!-- /HotLog -->
+				</div>
+				<!-- Yandex.Metrika informer -->
+				<div class="counter">
+					<!-- Yandex.Metrika informer -->
+					<a href="https://metrika.yandex.ru/stat/?id=25036022&amp;from=informer" target="_blank"
+						rel="nofollow"><img src="./Народный%20контроль_files/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+							style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика"
+							title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"
+							onclick="try{Ya.Metrika.informer({i:this,id:25036022,lang:&#39;ru&#39;});return false}catch(e){}" width="80"></a>
+					<!-- /Yandex.Metrika informer -->
+
+					<!-- Yandex.Metrika counter -->
+					<script>
+						(function (d, w, c) {
+							(w[c] = w[c] || []).push(function () {
+								try {
+									w.yaCounter25036022 = new Ya.Metrika({
+										id: 25036022,
+										clickmap: true,
+										trackLinks: true,
+										accurateTrackBounce: true
+									});
+								} catch (e) { }
+							});
+
+							var n = d.getElementsByTagName("script")[0],
+								s = d.createElement("script"),
+								f = function () {n.parentNode.insertBefore(s, n);};
+							s.type = "text/javascript";
+							s.async = true;
+							s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+							if (w.opera == "[object Opera]") {
+								d.addEventListener("DOMContentLoaded", f, false);
+							} else {f();}
+						})(document, window, "yandex_metrika_callbacks");
+					</script>
+					<noscript>
+						<div><img src="//mc.yandex.ru/watch/25036022" style="position:absolute; left:-9999px;" alt="">
+						</div>
+					</noscript>
+					<!-- /Yandex.Metrika counter -->
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>

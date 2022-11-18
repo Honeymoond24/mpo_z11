@@ -1,0 +1,302 @@
+var regerror = 0;
+var count_events = 0;
+
+function parseGetParams() { 
+    var $_GET = {}; 
+    var __GET = window.location.search.substring(1).split("&"); 
+    for(var i=0; i<__GET.length; i++) { 
+        var getVar = __GET[i].split("="); 
+        $_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+    } 
+    return $_GET; 
+}
+
+function set_url() {
+    var cururl = window.location.href.split('?');
+    var curpage = cururl[0];
+    var newurl = curpage + '?c=' + $('#cat_list').val() + '&d=' + $('#region_list').val() + '&s=' + $('#status_list').val() + '&ord=' + $('#order_list').val() + '&pg=1';
+    document.location.href = newurl;
+}
+
+$(document).ready( function() {
+    $(".password").passStrength({
+        userid: "#fiin"
+    });                            
+});
+
+$(document).ready( function() {
+    $('#fpassword2').unbind().keyup(function(){
+        var pass = document.getElementById('fpassword').value;
+        var pass2 = this.value;
+        if(pass === pass2) {
+            $('#checkpass').html('<span class="glyphicon glyphicon-ok text-success"></span>');
+        } else {
+             $('#checkpass').html('<span class="glyphicon glyphicon-remove text-danger"></span>');
+        }
+        if(pass2.length>0){
+           $('#fpassword').attr('readonly', 'readonly');
+        } else {
+            $('#fpassword').removeAttr('readonly');
+        }
+    });                                
+});
+
+$(document).ready(function(){ //СОЗДАЕТ МАСКУ ДЛЯ ПОЛЕЙ ВВОДА ТЕЛЕФОННЫХ НОМЕРОВ
+  $("#hphone").inputmask("mask", {"mask": "99-99-99"});
+  $("#mphone").inputmask("mask", {"mask": "+7(799) 999-99-99"});
+});
+
+$(function() {//ВЫВОДИТ КАПТЧУ НА СТРАНИЦЕ РЕГИСТРАЦИИ
+    $(".ajax-fc-container").captcha({
+        borderColor: "white",
+        formId: "autor_form",
+        captchaDir: "js/captcha",
+        url: "js/captcha/captcha.php",
+        text: "Докажите что Вы человек, <br />перетащите <span>ножницы</span> в круг."
+    });
+});
+
+$(document).ready(function(){
+    $('.ld').click(function() {
+        var param = get_filter_data();
+        var url = 'core/scripts/load_events.php?e=' + count_events + '&' + param;
+        $.getScript(url);
+        count_events = count_events + 10;
+    }); 
+})
+
+$(document).ready(function(){
+    $('#search_adr').click(function() {
+        var strid = document.getElementById('streetcode').value;
+        var hnum = document.getElementById('evbuids').value;
+        $.post('core/scripts/attached_events.php', { str: strid, bld: hnum },
+            function(data){
+                document.getElementById('curadres').innerHTML = '';
+                $('#curadres').html(data);
+                $('#cur_evadres').css('display', 'block');
+        });
+    }); 
+})
+
+function get_filter_data(){
+    var cat = document.getElementById('cat_list').value;
+    var reg = document.getElementById('region_list').value;
+    var stat = document.getElementById('status_list').value;
+    var ord = document.getElementById('order_list').value;
+    var filter = 'cat=' + cat + '&reg=' + reg + '&stat=' + stat + '&ord=' + ord;
+    return filter;
+}
+
+/*$(document).ready(function(){
+    $('.filter').change(function() {
+        var a = get_filter_data();
+        $.post("core/scripts/test.php", { data: a },
+            function(data){
+                alert("Data Loaded: " + data);
+            });
+        }); 
+})*/
+
+/*$(document).ready(function(){
+    $('.filter').click(function() {
+        count_events = 0;
+        var param = get_filter_data();
+        $('#etb').empty();
+        var url = 'core/scripts/load_events.php?'+ param;
+        $.getScript(url);
+    }); 
+})*/
+
+$(function () {
+    $("#slider").responsiveSlides({
+        auto: false,
+        pager: true,
+        speed: 300,
+        maxwidth: 540
+    });
+});
+
+$(document).ready(function(){
+    $('#evdistrict').change(function() {
+        var region = this.value;
+        $.post('core/scripts/get_locality.php', { reg: region },
+            function(data){
+                $('#localist').html(data);
+        });
+        if(region == 7789){
+            $('#adres').css({"display": "block"});
+            $('#locality').css({"display": "none"});
+        } else {
+            $('#adres').css({"display": "none"});
+            $('#locality').css({"display": "block"});
+        }
+    }); 
+})
+
+$(document).ready(function(){
+    $('#fdistrict').change(function() {
+        var region = this.value;
+        $.post('core/scripts/get_locality.php', { reg: region },
+            function(data){
+                $('#localist').html(data);
+        });
+        if(region == 7789){
+            $('#adres').css({"display": "block"});
+            $('#locality').css({"display": "none"});
+        } else {
+            $('#adres').css({"display": "none"});
+            $('#locality').css({"display": "block"});
+        }
+    }); 
+})
+
+$(document).ready(function(){
+    $('.reglink').click(function() {
+      var curid = this.id;
+      var trid = curid + '_tr';
+      var cls = $('#' + trid).attr("class");
+      switch(cls){
+        case 'normal':
+          $('body').css({'cursor': 'progress'});
+          $('#loader').css({'display': 'block'});        
+          $.post("core/scripts/get_repcat.php", { reg: curid },
+            function(data){
+              $('#' + trid).after(data);
+              $('body').css({'cursor': 'default'});
+              $('#loader').css({'display': 'none'});              
+            });
+          $('#' + trid).attr({class: "activ"});
+        break;
+        case 'activ':
+          $('.' + curid).remove();
+          $('#' + trid).attr({class: "normal"});
+        break;
+      }
+    }); 
+})
+
+$(document).ready(function(){
+    $('.catlink').click(function() {
+      var curid = this.id;
+      var trid = curid + '_tr';
+      var cls = $('#' + trid).attr("class");
+      switch(cls){
+        case 'normal':
+          $('body').css({'cursor': 'progress'});
+          $('#loader').css({'display': 'block'});
+          $.post("core/scripts/get_repreg.php", { cat: curid },
+            function(data){
+              $('#' + trid).after(data);
+              $('body').css({'cursor': 'default'});
+              $('#loader').css({'display': 'none'});
+            });
+          $('#' + trid).attr({class: "activ"});
+        break;
+        case 'activ':
+          $('.' + curid).remove();
+          $('#' + trid).attr({class: "normal"});
+        break;
+      }
+    }); 
+})
+
+function map_marker(){
+  var strid = document.getElementById('streetcode').value;
+  var buildid = document.getElementById('evbuids').value;
+  var url = 'core/scripts/add_marker.php?s=' + strid + '&b=' + buildid;
+  $.getScript(url);
+}
+
+$(document).ready(function(){
+  $("#evbuids").blur(function () {
+        map_marker();
+    });
+ });
+
+$(document).ready(function(){
+  $("#fiin").blur(function () {
+    var iin = document.getElementById('fiin').value;
+    if(iin.length>9){
+      $.post('core/scripts/check_regdata.php', { t: 1, v: iin },
+        function(data){
+          var dt = data.split(',');
+          if(dt[0] == 0){
+            $('#fiin_check').html('<span>Вы можете использовать данный ИИН</span>');
+            $('#fiin_check').css({'color': 'green'});
+            if(dt[1] != 'no'){
+            	$('#ffio').attr({'value': dt[1]});
+            } else {
+            	$('#ffio').attr({'value': ''});
+            }
+          } else {
+            $('#fiin_check').html('<span>Вы не можете использовать данный ИИН, т.к. он уже зарегистрирован в системе</span>');
+            $('#fiin_check').css({'color': 'red'});
+            $('#ffio').attr({'value': ''});
+          }
+      });      
+    } else {
+      $('#fiin_check').html('<span>ИИН не может быть меньше 9 символов</span>');
+      $('#fiin_check').css({'color': 'red'});
+      $('#ffio').attr({'value': ''});
+    }
+  });
+});
+
+$(document).ready(function(){
+  $("#fnick").blur(function () {
+    var nick = document.getElementById('fnick').value;
+    if(nick.length>2){
+      $.post('core/scripts/check_regdata.php', { t: 3, v: nick },
+        function(data){
+          if(data == 0){
+            $('#nick_check').html('<span>Вы можете использовать данный никнейм</span>');
+            $('#nick_check').css({'color': 'green'});
+          } else {
+            $('#nick_check').html('<span>Вы не можете использовать данный никнейм, т.к. он уже зарегистрирован в системе</span>');
+            $('#nick_check').css({'color': 'red'});
+          }
+      });      
+    } else {
+      $('#nick_check').html('<span>Никнейм не может быть меньше 3 символов</span>');
+      $('#nick_check').css({'color': 'red'})
+    }
+  });
+});
+
+$(document).ready(function(){
+  $("#fmail").blur(function () {
+    var mail = document.getElementById('fmail').value;
+    if(mail.length>6){
+      $.post('core/scripts/check_regdata.php', { t: 2, v: mail },
+        function(data){
+          if(data == 0){
+            $('#mail_check').html('<span>Вы можете использовать данный E-mail</span>');
+            $('#mail_check').css({'color': 'green'});
+          } else {
+            $('#mail_check').html('<span>Вы не можете использовать данный E-mail, т.к. он уже зарегистрирован в системе</span>');
+            $('#mail_check').css({'color': 'red'});
+          }
+      });      
+    } else {
+      $('#mail_check').html('<span>E-mail не может быть меньше 6 символов</span>');
+      $('#mail_check').css({'color': 'red'});
+    }
+  });
+});
+
+$(document).ready(function(){
+    $("body").on("change", "#rules_confirm", function(){
+      var stc = $('#rules_confirm').prop("checked");
+      if(stc == true){
+         $('#save_massage').prop('disabled', false);
+      } else {
+          $('#save_massage').prop('disabled', true);
+      }
+    });
+});
+
+$(document).ready(function(){
+    $(".select2").select2({
+      placeholder: 'Select an option'
+    });
+});
